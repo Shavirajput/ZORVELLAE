@@ -1,7 +1,11 @@
 # ZORVELLAE — Component Architecture
 
-**Framework:** React 18 + Vite 5<br>
-**Routing:** React Router v6<br>
+> This file preserves the original intended component map and is not an
+> inventory of all components currently implemented. For the live structure,
+> routes, and feature status, see `ARCHITECTURE.md` and `FEATURES.md`.
+
+**Framework:** React 19 + Vite 8<br>
+**Routing:** React Router v7<br>
 **State:** Context API<br>
 **Icons:** Lucide React<br>
 **Styling:** Tailwind CSS (custom design tokens)
@@ -11,7 +15,7 @@
 ## Complete Frontend Folder Structure
 
 ```
-client/
+frontend/
 ├── public/
 │   ├── favicon.ico
 │   ├── logo.svg

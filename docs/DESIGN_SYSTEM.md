@@ -1,6 +1,7 @@
 # ZORVELLAE — Design System
 
-**Source:** `botanical_clinical_luxury/DESIGN.md` + All 23 Stitch HTML exports<br>
+**Source:** Approved PDFs in `references/approved-pdf-designs/`; Stitch exports and
+`botanical_clinical_luxury/DESIGN.md` are supporting references only<br>
 **Style:** Warm Editorial Minimalism<br>
 **Aesthetic:** Pharmaceutical rigour × Luxury sensorial ritual
 

@@ -4,8 +4,9 @@
 **ODM:** Mongoose 9<br>
 **Naming Convention:** camelCase fields, PascalCase model names
 
-The implemented customer-data models are `User`, `Cart`, `Wishlist`, and `Address`.
-Orders, payments, reviews, and ingredients below remain future schema planning only.
+The implemented customer-data models are `User`, `Cart`, `Wishlist`, `Address`,
+and `Order`. Payments, reviews, and ingredients below remain future schema
+planning only.
 
 ---
 
@@ -47,45 +48,20 @@ HTTP-only cookie; they are not returned to the frontend.
 ```js
 // models/Category.js
 const categorySchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true,
-    unique: true,
-  },
-  slug: {
-    type: String,
-    required: true,
-    unique: true,
-    lowercase: true,
-  },
-  description: String,
-  image: String,
-  icon: String,              // Material Symbol name or Lucide icon name
-  parentCategory: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Category',
-    default: null,            // For subcategories (optional)
-  },
-  displayOrder: {
-    type: Number,
-    default: 0,
-  },
-  isActive: {
-    type: Boolean,
-    default: true,
-  },
-  seoTitle: String,
-  seoDescription: String,
+  name: { type: String, required: true, trim: true },
+  slug: { type: String, required: true, unique: true, lowercase: true },
+  description: { type: String, trim: true, default: '' },
+  bannerImage: { type: String, trim: true, default: '' },
+  sortOrder: { type: Number, default: 0, min: 0 },
+  isActive: { type: Boolean, default: false },
+  isPublished: { type: Boolean, default: false },
+  isDemo: { type: Boolean, default: false },
 }, { timestamps: true });
 ```
 
-**Seed Categories (from references):**
-1. Targeted Serums & Elixirs
-2. Barrier Creams & Hydrators
-3. Gentle Cleansers
-4. Eye Care
-5. Curated Ritual Sets
+Admin category statuses map to the existing `isActive` and `isPublished`
+flags. Categories referenced by products cannot be deleted through the admin
+API.
 
 ---
 
@@ -94,21 +70,14 @@ const categorySchema = new mongoose.Schema({
 ```js
 // models/Product.js
 const variantSchema = new mongoose.Schema({
-  label: { type: String, required: true },     // "30ml", "50ml"
-  sku:   { type: String, required: true, unique: true },
+  id: { type: String, required: true },
+  label: { type: String, required: true },
   price: { type: Number, required: true, min: 0 },
-  compareAtPrice: { type: Number, default: null },
-  stock: { type: Number, required: true, min: 0, default: 0 },
-  isDefault: { type: Boolean, default: false },
-}, { _id: true });
-
-const ingredientRefSchema = new mongoose.Schema({
-  ingredient: { type: mongoose.Schema.Types.ObjectId, ref: 'Ingredient' },
-  percentage: String,     // "3%", "0.5%"
-  displayOrder: Number,
+  sku: { type: String, trim: true, uppercase: true, default: '' },
 }, { _id: false });
 
 const productSchema = new mongoose.Schema({
+  id: { type: String, required: true, unique: true },
   name: {
     type: String,
     required: true,
@@ -120,66 +89,38 @@ const productSchema = new mongoose.Schema({
     unique: true,
     lowercase: true,
   },
+  description: { type: String, required: true, trim: true },
   category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Category',
     required: true,
   },
-
-  // Descriptions
-  shortDescription: { type: String, maxlength: 300 },
-  whatItDoes: String,         // Accordion section 1
-  howToApply: String,         // Accordion section 2
-  clinicalResults: String,    // Accordion section 3
-  fullInciList: String,       // Full INCI ingredient list (text)
-
-  // Pricing (base / default variant price mirrors variants[0])
+  categoryLabel: { type: String, required: true, trim: true },
+  images: [{ url: { type: String, required: true }, alt: { type: String, required: true } }],
   price: { type: Number, required: true, min: 0 },
-  compareAtPrice: { type: Number, default: null },
-
-  // Variants (size/format options)
+  compareAtPrice: { type: Number, min: 0 },
+  currency: { type: String, required: true, uppercase: true, default: 'USD' },
   variants: [variantSchema],
-
-  // Images
-  images: [{ type: String }],  // Array of image URLs / paths
-
-  // Ingredients (rich references)
-  ingredients: [ingredientRefSchema],
-
-  // Clinical & marketing metadata
-  badges:        [String],     // ["Bestseller", "Step 02"]
-  skinConcerns:  [String],     // ["Dryness", "Hyperpigmentation"]
-  clinicalClaim: String,       // "92% improvement in 28 days"
-  batchInfo: {
-    batchNumber:   String,
-    hplcVerified:  { type: Boolean, default: false },
-    purityPercent: Number,
-  },
-  certifications: [String],    // ["Non-Comedogenic", "Cruelty-Free", "Phyto-Derived"]
-
-  // Commerce flags
-  isActive:   { type: Boolean, default: true },
-  isFeatured: { type: Boolean, default: false },
-  isBestseller: { type: Boolean, default: false },
-  displayOrder: { type: Number, default: 0 },
-
-  // Aggregated stats (denormalized for performance)
-  rating:      { type: Number, default: 0, min: 0, max: 5 },
-  reviewCount: { type: Number, default: 0 },
-  soldCount:   { type: Number, default: 0 },
-
-  // SEO
-  seoTitle:       String,
-  seoDescription: String,
+  ingredients: { type: String, trim: true, default: '' },
+  usage: { type: String, trim: true, default: '' },
+  specifications: { type: mongoose.Schema.Types.Mixed, default: () => ({}) },
+  badge: { type: String, trim: true, default: '' },
+  sortOrder: { type: Number, default: 0, min: 0 },
+  isActive: { type: Boolean, default: false },
+  isPublished: { type: Boolean, default: false },
+  isDemo: { type: Boolean, default: false },
+  purchaseAvailable: { type: Boolean, default: false },
 }, { timestamps: true });
 ```
 
-**Indexes:**
-- `slug` — unique
-- `category` — for category page queries
-- `isActive`, `isFeatured` — for shop/homepage
-- `price` — for price sort/filter
-- Text index on `name`, `shortDescription` — for search
+The model computes the base `price` from the lowest variant price during
+validation and prevents demo products from being purchase-available. There
+are no inventory fields. Admin input validation normalizes SKU values,
+requires SKUs to be unique within a product payload, and a partial unique
+MongoDB index prevents non-empty SKU reuse across product records.
+
+**Indexes:** unique product `id` and `slug`; `{ isActive, isPublished,
+sortOrder }`; and `{ category, isActive, isPublished }`.
 
 ---
 
@@ -254,97 +195,24 @@ the oldest remaining address.
 
 ---
 
-## 8. Order Model
+## 8. Order Model (implemented)
 
-```js
-// models/Order.js
-const orderItemSchema = new mongoose.Schema({
-  product:      { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
-  productName:  String,         // Snapshot at time of order
-  productImage: String,
-  variantSku:   String,
-  variantLabel: String,
-  price:        Number,
-  quantity:     Number,
-}, { _id: false });
+`Order` stores a unique generated `ZV-YYYYMMDD-<random suffix>` reference and
+an idempotency key unique within its customer account. Items preserve product,
+variant, image, quantity, unit-price, and line-total snapshots. The selected
+shipping address and contact email are also snapshotted. A compound owner/date
+index supports paginated customer history.
 
-const orderSchema = new mongoose.Schema({
-  orderNumber: {
-    type: String,
-    unique: true,              // Auto-generated: ZVL-2026-001234
-  },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
+The order subtotal is calculated from current server-side catalog variant
+prices. Shipping and tax are explicitly marked `not_calculated`; neither is
+included in the subtotal. Status starts at `placed`, with a timestamped history
+and a defined lifecycle of `placed`, `processing`, `shipped`, `delivered`, or
+`cancelled`. No customer status mutation, admin order workflow, or payment
+processing is implemented.
 
-  items: [orderItemSchema],
-
-  shippingAddress: {           // Snapshot of address at order time
-    fullName: String,
-    phone:    String,
-    line1:    String,
-    line2:    String,
-    city:     String,
-    state:    String,
-    pincode:  String,
-    country:  String,
-  },
-
-  shippingMethod: {
-    type: String,
-    enum: ['standard', 'express', 'complimentary'],
-    default: 'standard',
-  },
-  shippingCost: { type: Number, default: 0 },
-
-  pricing: {
-    subtotal:    { type: Number, required: true },
-    discount:    { type: Number, default: 0 },
-    couponCode:  String,
-    shipping:    { type: Number, default: 0 },
-    total:       { type: Number, required: true },
-  },
-
-  status: {
-    type: String,
-    enum: ['pending', 'confirmed', 'processing', 'dispatched', 'delivered', 'cancelled', 'refunded'],
-    default: 'pending',
-  },
-
-  payment: {
-    method:    { type: String, enum: ['razorpay', 'stripe', 'cod'] },
-    status:    { type: String, enum: ['pending', 'paid', 'failed', 'refunded'], default: 'pending' },
-    // Razorpay
-    razorpayOrderId:   String,
-    razorpayPaymentId: String,
-    razorpaySignature: String,
-    // Stripe
-    stripePaymentIntentId: String,
-    paidAt: Date,
-  },
-
-  tracking: {
-    carrier:        String,
-    trackingNumber: String,
-    trackingUrl:    String,
-    dispatchedAt:   Date,
-    estimatedDelivery: Date,
-  },
-
-  notes: String,              // Customer notes at checkout
-  cancelReason: String,
-
-}, { timestamps: true });
-```
-
-**Indexes:**
-- `orderNumber` — unique
-- `user` — customer order history
-- `status` — admin filtering
-- `createdAt` — sorting
-- `payment.razorpayPaymentId` — payment lookup
+Order creation reads only the authenticated customer's cart and saved address.
+It rejects inactive, unpublished, demo, unavailable, or mismatched variants.
+Order details always filter by both order ID and authenticated owner.
 
 ---
 
@@ -400,8 +268,8 @@ const contactMessageSchema = new mongoose.Schema({
 // Performance-critical indexes
 User:            email (unique), defaultShippingAddress
 Category:        slug (unique), isActive
-Product:         slug (unique), category, isActive, isFeatured, price,
-                 text({ name: 'text', shortDescription: 'text' })
+Product:         id (unique), slug (unique), { isActive, isPublished,
+                 sortOrder }, { category, isActive, isPublished }
 Ingredient:      slug (unique), type, isActive
 Cart:            customer (unique)
 Wishlist:        customer (unique)
@@ -417,7 +285,7 @@ ContactMessage:  isRead, createdAt
 ## Environment Variables
 
 ```env
-# server/.env
+# backend/.env
 
 # Server
 NODE_ENV=development
@@ -451,7 +319,7 @@ MAX_FILE_SIZE=5242880
 ```
 
 ```env
-# client/.env
+# frontend/.env
 
 VITE_API_URL=http://localhost:5000/api
 VITE_RAZORPAY_KEY_ID=rzp_test_xxxxxx

@@ -6,8 +6,8 @@
 **Versioning:** `/api/v1/` prefix recommended for future-proofing
 
 This document includes both implemented and planned endpoints. Authentication,
-customer cart, wishlist, and address endpoints are implemented. Order and
-payment processing are not implemented.
+customer cart, wishlist, address, and customer order-record endpoints are
+implemented. Payment processing is not implemented.
 
 ---
 
@@ -27,7 +27,6 @@ payment processing are not implemented.
 |--------|----------|------|-------------|
 | POST | `/api/auth/register` | 🔓 | Register new customer |
 | POST | `/api/auth/login` | 🔓 | Login and set HTTP-only session cookie |
-| POST | `/api/auth/admin/login` | 🔓 | Admin login, returns admin JWT |
 | GET | `/api/auth/me` | 🔐 | Get current user profile |
 | PATCH | `/api/auth/me` | 🔐 | Update profile name and email |
 | PUT | `/api/auth/change-password` | 🔐 | Change password |
@@ -55,6 +54,12 @@ cookie with environment-appropriate `Secure` and `SameSite` settings.
   }
 }
 ```
+
+Admin authentication is separate from customer authentication. It uses
+`JWT_ADMIN_SECRET`, a distinct `zorvellae_admin_session` cookie, and a persisted
+`User.role === 'admin'` check on every protected API request. Public registration
+cannot set an admin role. See [API.md](./API.md) for dashboard APIs and the
+operator-only first-admin provisioning procedure.
 
 ---
 
@@ -90,7 +95,7 @@ Invalid query parameters return `400`; unknown categories/products return `404`;
 
 Category responses include slug, name, description, optional banner image, display order, demo status, and product count. Category mutation routes are not implemented in this milestone.
 
-The explicit development-only seed command imports centralized sample data from `client/src/data/formulations.js`, upserts demo records without deleting data, and requires `NODE_ENV=development` plus `SEED_DEMO_DATA=true`.
+The explicit development-only seed command imports centralized sample data from `frontend/src/data/formulations.js`, upserts demo records without deleting data, and requires `NODE_ENV=development` plus `SEED_DEMO_DATA=true`.
 
 ---
 
@@ -151,48 +156,32 @@ session subject.
 
 ---
 
-## 7. Order API
-
-> **Not implemented.** Checkout remains a local demo confirmation. No permanent
-> orders are created by the customer-data milestone.
+## 7. Customer Order API
 
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
-| POST | `/api/orders` | 🔐 | Create order (post-payment confirmation) |
-| GET | `/api/orders` | 🔐 | Get current user's orders |
-| GET | `/api/orders/:id` | 🔐 | Single order detail |
-| GET | `/api/orders/admin/all` | 🛡️ | All orders (admin) |
-| PUT | `/api/orders/:id/status` | 🛡️ | Update order status |
-| PUT | `/api/orders/:id/tracking` | 🛡️ | Add tracking info |
+| POST | `/api/customer/orders` | 🔐 | Explicitly create an order record from the authenticated customer's saved cart |
+| GET | `/api/customer/orders` | 🔐 | Paginated order history for the authenticated customer |
+| GET | `/api/customer/orders/:orderId` | 🔐 | Read one owned order and its stored snapshots |
 
-**Create Order Request:**
-```json
-{
-  "items": [
-    { "product": "...", "variant": "ZVL-CBS-30", "quantity": 1, "price": 68.00 }
-  ],
-  "shippingAddress": {
-    "name": "Priya Sharma",
-    "line1": "12, MG Road",
-    "city": "Bangalore",
-    "state": "Karnataka",
-    "pincode": "560001",
-    "country": "India",
-    "phone": "+91 9876543210"
-  },
-  "shippingMethod": "standard",
-  "paymentMethod": "razorpay",
-  "paymentResult": {
-    "razorpay_order_id": "...",
-    "razorpay_payment_id": "...",
-    "razorpay_signature": "..."
-  },
-  "subtotal": 68.00,
-  "shippingCost": 0,
-  "discount": 0,
-  "total": 68.00
-}
-```
+Order creation requires a UUID v4 `Idempotency-Key` header and a JSON body with
+the owned `addressId`. Product IDs, variants, quantities, names, prices,
+currency, address values, and subtotal are loaded or verified by the server;
+submitted product or price values are ignored. The order stores
+product/variant, price, contact-email, and shipping address snapshots. A reused
+key returns the original order; keys are scoped to the authenticated customer.
+
+Only active, published, non-demo products explicitly marked
+`purchaseAvailable: true` can be ordered. The existing catalog seed data is
+demo-only and unavailable for purchase, so it cannot produce a real order.
+The existing checkout remains a temporary local demo and does not call this
+endpoint.
+
+Order status values are `placed`, `processing`, `shipped`, `delivered`, and
+`cancelled`; a status history starts at `placed`. Customer status mutation,
+admin order management, payment processing, shipping rates, shipping totals,
+and tax calculation are not implemented. Order subtotal is the server-calculated
+merchandise subtotal only.
 
 ---
 
@@ -271,6 +260,14 @@ becomes default; deleting the default selects the oldest remaining address.
 
 ## 12. Admin Analytics API
 
+**Implemented admin foundation:** `GET /api/admin/auth/me` and
+`GET /api/admin/dashboard`; `POST /api/admin/auth/login` and `/logout`.
+Dashboard metrics include database counts and recent orders. Revenue is
+unavailable until verified paid-payment records are implemented; current
+products have no inventory fields, so inventory is reported as not configured.
+All dashboard endpoints verify an admin cookie and persisted admin role.
+Product CRUD and the remaining admin operations below are still planned.
+
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
 | GET | `/api/admin/analytics/overview` | 🛡️ | Total orders, revenue, customers |
@@ -321,7 +318,7 @@ becomes default; deleting the default selects the oldest remaining address.
 ## Middleware Architecture
 
 ```
-server/
+backend/
 ├── middleware/
 │   ├── auth.js           # verifyToken — decodes JWT, attaches req.user
 │   ├── adminAuth.js      # verifyAdmin — checks req.user.role === 'admin'

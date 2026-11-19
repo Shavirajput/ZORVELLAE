@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>ZORVELLAE — Science-Led Botanical Skincare</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>
+@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}
+::-webkit-scrollbar{display:none;}
+
+/* Luxury Scroll Reveal Styles */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.scroll-reveal-stagger {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-revealed,
+.scroll-reveal-stagger.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-0 { transition-delay: 0ms; }
+.delay-100 { transition-delay: 100ms; }
+.delay-120 { transition-delay: 120ms; }
+.delay-150 { transition-delay: 150ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-240 { transition-delay: 240ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-360 { transition-delay: 360ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal, .scroll-reveal-stagger {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed-variant": "#53443a", "surface-container": "#f0eee8", "secondary": "#735949", "on-tertiary-container": "#798e7c", "surface-container-lowest": "#ffffff", "error": "#ba1a1a", "outline-variant": "#d1c4bd", "outline": "#80756f", "background": "#fcf9f3", "on-error-container": "#93000a", "tertiary": "#000e04", "surface-bright": "#fcf9f3", "tertiary-container": "#132518", "secondary-fixed-dim": "#e1c0ac", "on-secondary-fixed-variant": "#594232", "on-secondary-fixed": "#29170b", "inverse-primary": "#d8c2b6", "secondary-fixed": "#ffdcc6", "tertiary-fixed": "#d2e8d4", "primary-container": "#2b1f17", "secondary-container": "#ffdcc6", "surface": "#fcf9f3", "on-tertiary": "#ffffff", "inverse-surface": "#31312d", "on-tertiary-fixed-variant": "#384b3c", "surface-dim": "#dcdad4", "on-background": "#1c1c18", "on-primary-container": "#98857a", "inverse-on-surface": "#f3f0ea", "surface-container-highest": "#e5e2dc", "on-surface": "#1c1c18", "surface-container-high": "#ebe8e2", "on-secondary-container": "#795f4e", "primary-fixed": "#f5ded1", "surface-container-low": "#f6f3ed", "surface-tint": "#6b5b51", "tertiary-fixed-dim": "#b7ccb8", "on-secondary": "#ffffff", "surface-variant": "#e5e2dc", "on-primary-fixed": "#251911", "primary": "#120904", "on-error": "#ffffff", "error-container": "#ffdad6", "primary-fixed-dim": "#d8c2b6", "on-primary": "#ffffff", "on-surface-variant": "#4e4540" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.25rem", "space-xl": "2.5rem", "gutter-mobile": "1rem", "gutter": "1.5rem", "space-3xl": "6rem", "space-md": "1rem", "space-sm": "0.5rem", "space-2xl": "4rem", "margin-mobile": "1rem", "space-lg": "1.5rem", "margin": "2rem" }, "fontFamily": { "headline-sm": [ "Playfair Display" ], "body-sm": [ "Inter" ], "headline-xl-mobile": [ "Playfair Display" ], "label-sm": [ "Inter" ], "headline-md": [ "Playfair Display" ], "headline-lg": [ "Playfair Display" ], "headline-lg-mobile": [ "Playfair Display" ], "label-md": [ "Inter" ], "headline-xl": [ "Playfair Display" ], "body-md": [ "Inter" ], "label-lg": [ "Inter" ], "body-lg": [ "Inter" ] }, "fontSize": { "headline-sm": [ "22px", { "lineHeight": "30px", "letterSpacing": "0.01em", "fontWeight": "500" } ], "body-sm": [ "13px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-xl-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "label-sm": [ "10px", { "lineHeight": "14px", "letterSpacing": "0.15em", "fontWeight": "600" } ], "headline-md": [ "28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "500" } ], "headline-lg": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "headline-lg-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.12em", "fontWeight": "600" } ], "headline-xl": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" } ], "body-md": [ "15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-lg": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.08em", "fontWeight": "600" } ], "body-lg": [ "18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="bg-secondary-container/60 py-space-xs px-gutter-mobile md:px-gutter text-center border-b border-primary/5"><p class="font-label-sm text-label-sm uppercase tracking-widest text-primary">THOUGHTFUL SKINCARE. SCIENCE-LED FORMULATIONS.</p></div><div class="h-20 max-w-[1360px] mx-auto px-6 md:px-10 flex items-center justify-between bg-[#fcf9f3]/95 backdrop-blur-md border-b border-[#2b1f17]/10"><div class="flex items-center gap-space-md"><a class="flex items-center" href="/"><img alt="ZORVELLAE — Science-Led Skincare" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa86d829HVAFMlwelV5KA-VlFxMRWyTKWCCVXSprXr2U38KML0BKaq9dKAEmf3ck6HROQtz1lKNAi2inPX-BlpCq4zF3bqZzqZbe36MIR6P6eoqIMt8aza2maHfBSkoTjE5q_l5mjm-GU_t1xyQ0jCnE12P65l6gzqf86K27WsfhAfn4ExRgKoDHBWOAriWZTXHZ5K5O1gxXidaHqaWDIWhBvjqTG0BrC0dIIPQfVLp2y1ePcq_WUA"/></a></div><nav class="hidden lg:flex items-center gap-space-lg">
+<!-- Shop Mega Menu Trigger & Container -->
+<div class="relative group py-2 transition-all">
+<a class="font-label-md text-xs uppercase tracking-wider font-medium text-on-surface-variant group-hover:text-primary transition-colors flex items-center gap-1 cursor-pointer" data-path="shop-all" href="#">
+    Shop
+    <span class="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover:rotate-180">expand_more</span>
+</a>
+<!-- Invisible bridge to prevent accidental menu hover loss -->
+<div class="absolute top-full left-1/2 -translate-x-1/2 w-[980px] h-3"></div>
+<!-- Mega Menu Container -->
+<div class="opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 -translate-y-2 group-hover:translate-y-0 absolute top-full left-1/2 -translate-x-1/2 w-[980px] bg-[#FCF9F3] border border-[#2B1F17]/10 shadow-2xl rounded-sm p-8 z-50 mt-1 pointer-events-none group-hover:pointer-events-auto">
+<div class="grid grid-cols-12 gap-8 text-left">
+<!-- Column 1: By Category -->
+<div class="col-span-3 space-y-4">
+<span class="font-label-sm text-[11px] uppercase tracking-widest text-secondary font-semibold block border-b border-outline-variant/30 pb-2">By Category</span>
+<ul class="space-y-2.5">
+<li><a class="font-body-sm text-[13px] text-on-surface hover:text-secondary font-medium transition-colors block" data-path="shop-all" href="#">All Formulations</a></li>
+<li><a class="font-body-sm text-[13px] text-on-surface-variant hover:text-primary transition-colors block" data-path="shop-all" href="#">Targeted Serums &amp; Elixirs</a></li>
+<li><a class="font-body-sm text-[13px] text-on-surface-variant hover:text-primary transition-colors block" data-path="shop-all" href="#">Barrier Creams &amp; Hydrators</a></li>
+<li><a class="font-body-sm text-[13px] text-on-surface-variant hover:text-primary transition-colors block" data-path="shop-all" href="#">Gentle Cleansers</a></li>
+<li><a class="font-body-sm text-[13px] text-on-surface-variant hover:text-primary transition-colors block" data-path="shop-all" href="#">Eye Care</a></li>
+<li><a class="font-body-sm text-[13px] text-on-surface-variant hover:text-primary transition-colors block" data-path="best-sellers" href="#">Curated Ritual Sets</a></li>
+</ul>
+</div>
+<!-- Column 2: By Bio-Active -->
+<div class="col-span-3 space-y-4">
+<span class="font-label-sm text-[11px] uppercase tracking-widest text-secondary font-semibold block border-b border-outline-variant/30 pb-2">Clinical Bio-Actives</span>
+<ul class="space-y-2.5">
+<li><a class="font-body-sm text-[13px] text-on-surface-variant hover:text-primary transition-colors block" data-path="our-science" href="#">Multi-Ceramide 3% Complex</a></li>
+<li><a class="font-body-sm text-[13px] text-on-surface-variant hover:text-primary transition-colors block" data-path="our-science" href="#">Bio-Synthesized Peptides</a></li>
+<li><a class="font-body-sm text-[13px] text-on-surface-variant hover:text-primary transition-colors block" data-path="our-science" href="#">Encapsulated Niacinamide</a></li>
+<li><a class="font-body-sm text-[13px] text-on-surface-variant hover:text-primary transition-colors block" data-path="our-science" href="#">Pure Bakuchiol CO2</a></li>
+<li><a class="font-body-sm text-[13px] text-on-surface-variant hover:text-primary transition-colors block" data-path="our-science" href="#">Copper Tripeptide-1</a></li>
+<li><a class="font-body-sm text-[13px] text-on-surface-variant hover:text-primary transition-colors block" data-path="our-science" href="#">Fermented Squalane</a></li>
+</ul>
+</div>
+<!-- Column 3: Product Spotlight Card -->
+<div class="col-span-3">
+<div class="p-4 bg-surface-container-lowest rounded-lg border border-outline-variant/40 flex flex-col justify-between h-full group/card hover:border-secondary/50 transition-colors">
+<div class="relative w-full aspect-square bg-surface-container-low rounded overflow-hidden flex items-center justify-center p-3 mb-3">
+<span class="absolute top-2 left-2 font-label-sm text-[9px] uppercase tracking-wider px-2 py-0.5 rounded bg-tertiary-container text-tertiary-fixed font-medium">Bestseller // Step 02</span>
+<img alt="Ceramide + Bio-Peptide Barrier Serum" class="w-4/5 h-4/5 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSJcmNto6BDTx3Zkt5NMM871fXCKguhGu6-dZ1xeyc0_FxeF1Sh3FgXDAkGmxA4C_hfBn2CjXT4CHL2ALwAlxOdZoPyBlngSr2WZd3dLrIkhRYaJdVyuBE8qKMzIOR54X4hzHd5bRfu9k68NOgM4E5La_vhJy91gwYw2xavzqoLYSCAV_CQpASznz6erk7jq60_pdU4dXdTtW402hX3VxdnjUXjXiVOLbzlNT2LCo"/>
+</div>
+<div>
+<h4 class="font-headline-sm text-sm text-primary leading-snug font-medium">Ceramide + Bio-Peptide Barrier Serum</h4>
+<div class="flex items-center justify-between mt-2 pt-2 border-t border-surface-container">
+<span class="font-headline-sm text-sm text-primary font-medium">$68.00</span>
+<a class="font-label-sm text-[11px] uppercase tracking-wider text-secondary font-semibold hover:text-primary transition-colors" href="#">Explore Monograph →</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 4: Clinical Perks & Quiz -->
+<div class="col-span-3 flex flex-col justify-between bg-surface-container-low/70 p-5 rounded-lg border border-outline-variant/30">
+<div class="space-y-3">
+<span class="font-label-sm text-[10px] uppercase tracking-widest text-secondary font-semibold">Diagnostic Engine</span>
+<p class="font-headline-sm text-base text-primary font-normal leading-snug">Unsure of your active compatibility?</p>
+<p class="font-body-sm text-[12px] text-on-surface-variant leading-relaxed">Let our formulation algorithm calibrate your bespoke ritual based on your lipid profile.</p>
+<a class="inline-flex items-center font-label-sm text-[11px] uppercase tracking-widest text-primary font-bold hover:text-secondary transition-colors pt-1" href="#" onclick="alert('Launching Zorvellae Skin Diagnostic Engine...');">
+            Take Skin Diagnostic Quiz →
+          </a>
+</div>
+<div class="pt-4 border-t border-outline-variant/30 space-y-2">
+<div class="flex items-center gap-2 text-[11px] text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">local_shipping</span>
+<span>Complimentary Expedited Shipping over $65</span>
+</div>
+<div class="flex items-center gap-2 text-[11px] text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">redeem</span>
+<span>3 Clinical Deluxe Samples with Every Order</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Skin Concerns Mega Menu Trigger & Container -->
+<div class="relative group py-2 transition-all">
+<a class="font-label-md text-xs uppercase tracking-wider font-medium text-on-surface-variant group-hover:text-primary transition-colors flex items-center gap-1 cursor-pointer" href="#">
+    Skin Concerns
+    <span class="material-symbols-outlined text-[16px] transition-transform duration-300 group-hover:rotate-180">expand_more</span>
+</a>
+<!-- Invisible bridge to prevent accidental menu hover loss -->
+<div class="absolute top-full left-1/2 -translate-x-1/2 w-[880px] h-3"></div>
+<!-- Mega Menu Container -->
+<div class="opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 -translate-y-2 group-hover:translate-y-0 absolute top-full left-1/2 -translate-x-1/2 w-[880px] bg-[#FCF9F3] border border-[#2B1F17]/10 shadow-2xl rounded-sm p-8 z-50 mt-1 pointer-events-none group-hover:pointer-events-auto">
+<div class="grid grid-cols-12 gap-8 text-left">
+<!-- Column 1: Primary Concerns -->
+<div class="col-span-4 space-y-4">
+<span class="font-label-sm text-[11px] uppercase tracking-widest text-secondary font-semibold block border-b border-outline-variant/30 pb-2">Target Concerns</span>
+<ul class="space-y-3">
+<li>
+<a class="group/item block" href="#">
+<span class="font-body-sm text-[13px] text-primary group-hover/item:text-secondary font-medium transition-colors block">Dryness &amp; Barrier Fragility</span>
+<span class="font-body-sm text-[11px] text-outline block">TEWL &amp; stratum lipid depletion</span>
+</a>
+</li>
+<li>
+<a class="group/item block" href="#">
+<span class="font-body-sm text-[13px] text-primary group-hover/item:text-secondary font-medium transition-colors block">Hyperpigmentation &amp; Sun Damage</span>
+<span class="font-body-sm text-[11px] text-outline block">Melanogenesis &amp; photo-oxidative stress</span>
+</a>
+</li>
+<li>
+<a class="group/item block" href="#">
+<span class="font-body-sm text-[13px] text-primary group-hover/item:text-secondary font-medium transition-colors block">Loss of Firmness &amp; Dermal Density</span>
+<span class="font-body-sm text-[11px] text-outline block">Collagen-elastin matrix decline</span>
+</a>
+</li>
+<li>
+<a class="group/item block" href="#">
+<span class="font-body-sm text-[13px] text-primary group-hover/item:text-secondary font-medium transition-colors block">Reactive, Rosacea &amp; Sensitized Skin</span>
+<span class="font-body-sm text-[11px] text-outline block">Neurosensory flushing &amp; erythema</span>
+</a>
+</li>
+<li>
+<a class="group/item block" href="#">
+<span class="font-body-sm text-[13px] text-primary group-hover/item:text-secondary font-medium transition-colors block">Blemish &amp; Micro-Congestion</span>
+<span class="font-body-sm text-[11px] text-outline block">Sebaceous balance &amp; follicular clarity</span>
+</a>
+</li>
+</ul>
+</div>
+<!-- Column 2: Targeted Regimens -->
+<div class="col-span-4 space-y-4">
+<span class="font-label-sm text-[11px] uppercase tracking-widest text-secondary font-semibold block border-b border-outline-variant/30 pb-2">Circadian Protocols</span>
+<ul class="space-y-3">
+<li>
+<a class="group/item block" href="#">
+<span class="font-body-sm text-[13px] text-primary group-hover/item:text-secondary font-medium transition-colors block">AM Diurnal Defense Ritual</span>
+<span class="font-body-sm text-[11px] text-outline block">Antioxidant shielding &amp; UV defense support</span>
+</a>
+</li>
+<li>
+<a class="group/item block" href="#">
+<span class="font-body-sm text-[13px] text-primary group-hover/item:text-secondary font-medium transition-colors block">PM Nocturnal Cellular Repair</span>
+<span class="font-body-sm text-[11px] text-outline block">Mitochondrial lipid synthesis during sleep</span>
+</a>
+</li>
+<li>
+<a class="group/item block" href="#">
+<span class="font-body-sm text-[13px] text-primary group-hover/item:text-secondary font-medium transition-colors block">Post-Retinoid &amp; Acid Recovery</span>
+<span class="font-body-sm text-[11px] text-outline block">Soothes chemical exfoliation peeling</span>
+</a>
+</li>
+<li>
+<a class="group/item block" href="#">
+<span class="font-body-sm text-[13px] text-primary group-hover/item:text-secondary font-medium transition-colors block">Barrier Reconstruction Protocol</span>
+<span class="font-body-sm text-[11px] text-outline block">Intensive 14-day lipid reset system</span>
+</a>
+</li>
+</ul>
+</div>
+<!-- Column 3: Diagnostic Engine Card -->
+<div class="col-span-4 bg-secondary-fixed/30 p-6 rounded-lg border border-secondary-fixed-dim/40 flex flex-col justify-between">
+<div class="space-y-3">
+<div class="inline-flex items-center gap-1.5 font-label-sm text-[10px] uppercase tracking-widest px-2.5 py-1 rounded-full bg-surface text-primary font-semibold">
+<span class="material-symbols-outlined text-[14px] text-secondary">biotech</span>
+            Dermatologist Calibrated
+          </div>
+<h4 class="font-headline-sm text-lg text-primary leading-tight font-normal">The Cutaneous Diagnostic Quiz</h4>
+<p class="font-body-sm text-[12px] text-on-surface-variant leading-relaxed">
+            Evaluate your Transepidermal Water Loss (TEWL) and oxidative markers across 428 clinical formulation matrices.
+          </p>
+</div>
+<div class="pt-6">
+<button class="w-full py-2.5 px-4 bg-primary text-on-primary font-label-sm text-[11px] uppercase tracking-wider rounded shadow hover:bg-primary-container transition-colors text-center" onclick="alert('Launching Zorvellae Skin Diagnostic Engine...');" type="button">
+            Launch Skin Diagnostic →
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<a class="font-label-md text-xs uppercase tracking-wider font-medium text-on-surface-variant hover:text-primary transition-colors" href="#">Skincare Routines</a><a class="font-label-md text-xs uppercase tracking-wider font-medium text-on-surface-variant hover:text-primary transition-colors" href="#">Our Science</a><a class="font-label-md text-xs uppercase tracking-wider font-medium text-on-surface-variant hover:text-primary transition-colors" href="#">Ingredients</a><a class="font-label-md text-xs uppercase tracking-wider font-medium text-on-surface-variant hover:text-primary transition-colors" href="#">About Us</a></nav><div class="flex items-center gap-space-md"><button aria-label="Search catalog" class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-[20px]">search</span></button><a aria-label="User account" class="text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" href="#"><span class="material-symbols-outlined text-[20px]">person</span></a><button aria-label="Shopping bag" class="relative text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-[20px]">shopping_bag</span><span class="absolute -top-1.5 -right-2 bg-primary text-on-primary font-label-sm text-[9px] w-4 h-4 rounded-full flex items-center justify-center leading-none">2</span></button></div></div></header><main class="w-full pt-20 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Monograph Header Strip -->
+<section class="w-full bg-surface-container-low py-space-sm px-gutter-mobile md:px-gutter">
+<div class="max-w-[1360px] mx-auto flex flex-wrap items-center justify-between gap-space-xs text-on-surface-variant font-label-sm text-label-sm tracking-widest uppercase">
+<div class="flex items-center gap-space-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>ARCHIVAL MONOGRAPH / VOL. 08</span>
+<span class="text-outline-variant">|</span>
+<span>ZORVELLAE CELLULAR RESEARCH</span>
+</div>
+<div class="flex items-center gap-space-md text-outline">
+<span>EST. ZÜRICH · BOSTON</span>
+<span>IN-VIVO CALIBRATED</span>
+</div>
+</div>
+</section>
+<!-- Section 1: Editorial Hero Section -->
+<section class="relative w-full py-space-2xl md:py-space-3xl overflow-hidden bg-surface">
+<!-- Ambient Botanical Gradient Shimmer -->
+<div class="absolute -top-32 right-0 w-[540px] h-[540px] bg-secondary-fixed/40 rounded-full blur-3xl pointer-events-none -z-0"></div>
+<div class="absolute top-1/2 -left-24 w-[420px] h-[420px] bg-tertiary-fixed/30 rounded-full blur-3xl pointer-events-none -z-0"></div>
+<div class="relative z-10 max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter">
+<!-- Top Badges / Monograph Meta -->
+<div class="flex flex-wrap items-center gap-space-sm mb-space-lg">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded bg-secondary-container/70 text-on-secondary-container font-label-sm text-label-sm uppercase tracking-widest font-semibold">
+<span class="material-symbols-outlined text-[14px]">biotech</span>
+          FOUNDING MONOGRAPH // ORIGIN &amp; PHILOSOPHY
+        </span>
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded bg-tertiary-container/10 text-on-tertiary-container font-label-sm text-label-sm uppercase tracking-widest">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+          ISO CLASS 5 CLEANROOM LABS
+        </span>
+</div>
+<!-- Main Asymmetric Headline & Manifesto Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<div class="lg:col-span-8 space-y-space-md">
+<h1 class="font-headline-xl text-headline-xl text-primary font-normal leading-[1.08] tracking-tight">
+            Bridging Dermal Rigor with <br/>
+<span class="italic font-normal text-secondary">Sensory Restorative Botany.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed pt-space-xs">
+            ZORVELLAE was founded on a singular conviction: human skin should never have to compromise between pharmaceutical-grade cellular performance and the biocompatible poetry of alpine botanical science.
+          </p>
+<div class="flex flex-wrap items-center gap-space-md pt-space-sm">
+<a class="inline-flex items-center justify-center h-12 px-space-xl bg-primary-container text-on-primary font-label-lg text-label-lg uppercase tracking-wider rounded shadow-md hover:bg-primary transition-all" href="#philosophy">
+              Examine Our Three Pillars
+            </a>
+<a class="inline-flex items-center gap-2 font-label-lg text-label-lg uppercase tracking-wider text-secondary font-semibold hover:text-primary transition-colors" href="#clinical-protocols">
+<span>View Laboratory Monograph</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Metric Snapshot Plaque -->
+<div class="lg:col-span-4 bg-surface-container-low p-space-lg rounded-xl shadow-sm space-y-space-md">
+<div class="flex items-center justify-between pb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">CLINICAL DOSSIER</span>
+<span class="font-label-sm text-label-sm text-outline">CH-60312</span>
+</div>
+<div class="space-y-space-sm">
+<div class="flex items-baseline justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Active Bio-Concentration</span>
+<span class="font-label-lg text-label-lg text-primary font-semibold">98.4%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 98.4%"></div>
+</div>
+</div>
+<div class="space-y-space-sm">
+<div class="flex items-baseline justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Cellular Compatibility Index</span>
+<span class="font-label-lg text-label-lg text-primary font-semibold">99.7%</span>
+</div>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-tertiary-container h-full rounded-full" style="width: 99.7%"></div>
+</div>
+</div>
+<div class="pt-space-xs text-on-surface-variant font-body-sm text-body-sm leading-relaxed">
+            Every formulation is synthesized under dual-accreditation across our laboratories in Zürich and Boston, pairing clinical Swiss dermatology with cutting-edge micro-fermentation chemistry.
+          </div>
+<div class="pt-space-xs flex items-center justify-between font-label-sm text-label-sm uppercase tracking-widest text-outline">
+<span>PHYTO-BIOCOMPATIBLE</span>
+<span>MIRON GLASS SEALED</span>
+</div>
+</div>
+</div>
+<!-- Luxury Hero Visual Mosaic -->
+<div class="mt-space-2xl grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+<!-- Frame 1: Laboratory Distillation Texture -->
+<div class="md:col-span-7 relative group overflow-hidden rounded-xl bg-surface-container shadow-md aspect-[16/10]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close up clinical laboratory glass petri dishes containing golden botanical lipid oil with micropipettes and pure white ceramide barrier emulsion on warm ivory surface with soft sunlight and olive leaves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfQQkI7NDFlQkHiu-1XFjK3Z1crnETa_EJCJY5faUkcsbg6FvHZniBgTGVEdnlfpkAOmzETvpUoNxVyiupN9WnkN-b9lJTsc9kd6rkjs7I_747GVZDSjKzVEcLJpezwsF-7IJuRZ617-dfniy9E1pn8cqcVmZrn6A9SGsck7Zmp2ZFv4f_IBRzNtW_LHjwi8Ay7ouK-NpNmyZTVwVvcu0o5xC-tYJ1WcXPH8BXbK0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent flex items-end p-space-lg">
+<div class="text-surface-container-lowest space-y-1">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary-fixed">PLATE 01 / CELLULAR HARVEST</span>
+<p class="font-headline-sm text-headline-sm leading-tight text-surface-container-lowest">Petri Monograph: Tri-Lipid Biomimetic Bilayer Emulsion</p>
+</div>
+</div>
+</div>
+<!-- Frame 2: Precision Amber Dropper Formulations -->
+<div class="md:col-span-5 relative group overflow-hidden rounded-xl bg-surface-container shadow-md aspect-[4/5] -mt-0 md:-mt-12">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Editorial still life of pharmaceutical amber glass bottles with gold collars and minimalist labels beside clinical jars and organic botanical olive branches in warm natural studio sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJfilJ90O-jZ80puztBdkY3Lj6zU-tYcOzh-x3HjeM0OtvnVfofnhILo5be6b-lEQ4N55cMpwXkg5cmEOkxFb9TmpztKcb5ZoO8bKbSNKLK2MIuugYqpzE1YbSDNaSs0Ho2bY6hY8axgt7Q-Of64yiX-6viS44FAHSJv3xmN86tLY2M_Av9HvIOlHaUEUE4hYYrQYSb11E_B0-ykMOUyyTnwwVz9cSTg487nvDLZY"/>
+<div class="absolute top-space-md right-space-md px-3 py-1 bg-surface/90 backdrop-blur-md rounded-full shadow-sm text-primary font-label-sm text-label-sm uppercase tracking-widest">
+            COLD-FERMENTED
+          </div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent flex items-end p-space-lg">
+<div class="text-surface-container-lowest space-y-1">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed">PLATE 02 / BIOPHOTONIC PROTECTION</span>
+<p class="font-body-md text-body-md leading-snug text-surface-container-lowest">Pharmaceutical-Grade Miron Glass Formulation Line</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: The Three Pillars of Cellular Integrity -->
+<section class="w-full py-space-3xl bg-surface-container-low" id="philosophy">
+<div class="max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter">
+<!-- Section Header -->
+<div class="max-w-2xl space-y-space-xs mb-space-2xl">
+<div class="flex items-center gap-space-xs text-secondary font-label-sm text-label-sm uppercase tracking-widest font-semibold">
+<span>THE ZORVELLAE DOCTRINE</span>
+<span class="w-8 h-[1px] bg-secondary"></span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary font-normal">
+          The Three Pillars of Cellular Integrity
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Skin does not respond to marketing claims; it responds to molecular geometry. We configure our formulas exclusively around human cutaneous biology.
+        </p>
+</div>
+<!-- Pillars 3-Column Bento Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Pillar 01 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-xl shadow-sm flex flex-col justify-between space-y-space-lg hover:shadow-md transition-shadow">
+<div class="space-y-space-md">
+<div class="flex items-center justify-between">
+<span class="w-10 h-10 rounded-full bg-secondary-fixed/50 flex items-center justify-center text-primary font-headline-sm text-headline-sm">01</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">LIPID ARCHITECTURE</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary font-normal leading-snug">
+              Biomimetic Lipid Equilibrium
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Standard moisturizers sit atop the epidermis with occlusive waxes. Zorvellae synthesizes identical 3:1:1 physiological lipid ratios (ceramides, phytosterols, and free fatty acids) that integrate directly into depleted stratum corneum lamellar sheets.
+            </p>
+</div>
+<!-- Micro Data Graphic -->
+<div class="bg-surface-container-low p-space-md rounded-lg space-y-space-xs">
+<div class="flex justify-between items-center text-label-sm font-label-sm uppercase tracking-wider text-on-surface">
+<span>Transepidermal Water Loss</span>
+<span class="font-semibold text-secondary">-58% in 48h</span>
+</div>
+<!-- Inline SVG Chart Mini -->
+<svg class="w-full h-8 text-secondary" fill="none" viewbox="0 0 200 40">
+<path d="M0 32 C 40 30, 80 16, 120 10 C 160 6, 180 4, 200 2" stroke="currentColor" stroke-linecap="round" stroke-width="2.5"></path>
+<circle cx="200" cy="2" fill="currentColor" r="3"></circle>
+</svg>
+<span class="block text-[11px] font-body-sm text-outline">Clinical In-Vivo Corneometry, n=44</span>
+</div>
+</div>
+<!-- Pillar 02 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-xl shadow-sm flex flex-col justify-between space-y-space-lg hover:shadow-md transition-shadow">
+<div class="space-y-space-md">
+<div class="flex items-center justify-between">
+<span class="w-10 h-10 rounded-full bg-tertiary-fixed/60 flex items-center justify-center text-primary font-headline-sm text-headline-sm">02</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-tertiary-container font-semibold">RADICAL PURITY</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary font-normal leading-snug">
+              Empirical Potency &amp; Zero Omission
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              We never dilute our solutions with inert filler water. Every base is cold-fermented birch sap or alpine hydrosol. With 100% full-disclosure INCI listings and zero masking fragrances, our actives sit at verified therapeutic concentrations.
+            </p>
+</div>
+<!-- Micro Ingredient Disclosure Box -->
+<div class="bg-surface-container-low p-space-md rounded-lg space-y-1 font-body-sm text-[12px] text-on-surface-variant">
+<div class="flex justify-between pb-1 border-b border-surface-container">
+<span class="font-semibold text-primary">Inert Water Percentage:</span>
+<span class="text-error font-semibold">0.00%</span>
+</div>
+<div class="flex justify-between pb-1 border-b border-surface-container">
+<span class="font-semibold text-primary">Cold-Fermented Hydrosol:</span>
+<span class="text-tertiary-container font-semibold">84.20%</span>
+</div>
+<div class="flex justify-between">
+<span class="font-semibold text-primary">Targeted Bio-Actives:</span>
+<span class="text-secondary font-semibold">15.80%</span>
+</div>
+</div>
+</div>
+<!-- Pillar 03 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-xl shadow-sm flex flex-col justify-between space-y-space-lg hover:shadow-md transition-shadow">
+<div class="space-y-space-md">
+<div class="flex items-center justify-between">
+<span class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-primary font-headline-sm text-headline-sm">03</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">LIGHT BIOPHYSICS</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary font-normal leading-snug">
+              Biophotonic Violetglass Preservation
+            </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Standard amber glass degrades delicate bioactive polyphenols over time. Zorvellae formulations are sealed in Swiss Miron Biophotonic Violetglass, which blocks the harmful visible spectrum while permitting beneficial violet, infrared, and UVA wavelengths.
+            </p>
+</div>
+<!-- Micro Spectrum Badge -->
+<div class="bg-surface-container-low p-space-md rounded-lg space-y-space-xs">
+<div class="flex justify-between items-center text-label-sm font-label-sm uppercase tracking-wider text-primary">
+<span>Bio-Photonic Spectrum Filter</span>
+<span class="font-semibold text-primary">380-450 nm PASS</span>
+</div>
+<div class="w-full h-2 rounded-full bg-gradient-to-r from-purple-900 via-indigo-700 to-amber-700 opacity-90"></div>
+<span class="block text-[11px] font-body-sm text-outline">Shields living active compounds for up to 36 months</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Founders & Scientific Advisory Board -->
+<section class="w-full py-space-3xl bg-surface">
+<div class="max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter">
+<!-- Section Title & Lead -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-2xl">
+<div class="max-w-xl space-y-space-xs">
+<span class="text-secondary font-label-sm text-label-sm uppercase tracking-widest font-semibold block">THE MINDS SHAPING THE FORMULAE</span>
+<h2 class="font-headline-lg text-headline-lg text-primary font-normal">
+            Scientific Council &amp; Formulation Architects
+          </h2>
+</div>
+<p class="max-w-md font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Our founders unite over forty years of clinical peer-reviewed research across cellular dermatology, pharmaceutical biology, and alpine phytochemistry.
+        </p>
+</div>
+<!-- Founder Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Dr. Corinne Vance -->
+<div class="group bg-surface-container-low rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Dignified editorial portrait of Dr Corinne Vance female scientist in modern minimal laboratory wearing subtle beige cashmere sweater with natural light and microscope in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg8XoHv8uffHKziYxKNEv4WWj21PCjNNAvGVqOBkOOAlzQG-JEoZ7q8UFghybLz5lERPN6k40m76fi0jF_pgrxeOkrUL0wu_RS80gNU680ewNUkcPcwHMAH_52fWH_8TMXMW-4qpFTmtKkiK_aUglUVsShduvvafb5idEsHQcU4ui8VjBDX4g4F_Vbvp4dAsRVmAd1hyl_qRuAoCesLevqTC3MxYTb_PqGQNYJvyA"/>
+</div>
+<div class="p-space-lg space-y-space-sm">
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">CO-FOUNDER &amp; HEAD OF CELLULAR BIOLOGY</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Dr. Corinne Vance, Ph.D.</h3>
+<p class="font-label-sm text-label-sm text-outline">Former Swiss Federal Institute of Technology (ETH Zürich)</p>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Pioneered botanical cell-suspension fermentations that preserve heat-sensitive plant peptides. Holder of 7 patents in transdermal lipid delivery systems.
+            </p>
+<div class="pt-space-xs flex items-center gap-space-xs text-secondary font-label-sm text-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+<span>18 Peer-Reviewed Monographs</span>
+</div>
+</div>
+</div>
+<!-- Dr. Julian Thorne -->
+<div class="group bg-surface-container-low rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Editorial portrait of Dr Julian Thorne male dermatologist in crisp white coat with architectural clinic interior and soft natural morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfMv1UkAgQ4_4lPa1p8NgXsiC5ay76B8IhNeBRtjQ8Ux5uC_bcuhD9tykJlU_G_e_o0tFLWiuxkT-CaeOpvY0Y87es1AkspGHzGJOOYeHVQGu3kJQDTgup_fm2gPUQMZfLYj_K9eY03dikzWMOYRPHrwWA8ttGsbnKqgoV8flKTfL9eg96adSkKovY-D12Mm2YZYkaGv_ebVaa0cxQKIdhaczFyp_LrfFXczOudCI"/>
+</div>
+<div class="p-space-lg space-y-space-sm">
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">CO-FOUNDER &amp; CLINICAL DIRECTOR</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Julian Thorne, M.D., FAAD</h3>
+<p class="font-label-sm text-label-sm text-outline">Harvard Medical School Clinical Instructor</p>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Specialist in barrier repair pathophysiology and post-procedural recovery. Oversees all double-blind, randomized clinical in-vivo trials for Zorvellae.
+            </p>
+<div class="pt-space-xs flex items-center gap-space-xs text-secondary font-label-sm text-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">clinical_notes</span>
+<span>Board-Certified Dermatologist</span>
+</div>
+</div>
+</div>
+<!-- Eleni Rostova -->
+<div class="group bg-surface-container-low rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Editorial portrait of Eleni Rostova female master phytopharmacist examining alpine botanical specimens in an apothecary studio with warm golden sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDd2sPLWtCXSO3mJzwVYBd-9_mCHysfOKZnCDJlYrfxsTjOjz2PxPdUBtGuSGQrXa29lSZnCRUgHqq0NT_rhgGdURcHgf5hIaShntwR-AyY5mPAt0LEBK9x6Uo_eaNadSlNnyDE00dvT6MZJ6B3rhbD6hJzGKRN7PSL2OI0Oh_EGeT1FjyUhNsVGATvonLcwrp2OA8S8Iw5j9WyVsK63geBX_tgQOydTemNg7GnjG4"/>
+</div>
+<div class="p-space-lg space-y-space-sm">
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">HEAD OF BOTANICAL PHARMACOGNOSY</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Eleni Rostova</h3>
+<p class="font-label-sm text-label-sm text-outline">European Certified Master Phytopharmacist</p>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Curates high-altitude wildcrafted flora from Valais alpine reserves. Expert in solventless supercritical CO2 extraction for fragile plant fractions.
+            </p>
+<div class="pt-space-xs flex items-center gap-space-xs text-secondary font-label-sm text-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-[16px]">spa</span>
+<span>Alpine Biodynamic Specialist</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Founders' Shared Manifesto Callout -->
+<div class="mt-space-2xl bg-primary-container text-on-primary p-space-xl md:p-space-2xl rounded-2xl relative overflow-hidden shadow-lg">
+<div class="relative z-10 max-w-3xl space-y-space-md">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl">format_quote</span>
+<p class="font-headline-md text-headline-md text-surface-bright font-normal italic leading-snug">
+            "True efficacy is never achieved through aggressive chemical peeling or overwhelming the delicate cutaneous mantle. It is achieved by whispering the innate biochemical language of cellular repair."
+          </p>
+<div class="pt-space-xs flex items-center gap-space-md">
+<div>
+<p class="font-label-md text-label-md uppercase tracking-wider text-primary-fixed">The Zorvellae Founding Fellowship</p>
+<p class="font-body-sm text-body-sm text-on-primary-container">Zürich — Boston — Valais</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Behind the Formulations (4-Stage Alchemy Journey) -->
+<section class="w-full py-space-3xl bg-surface-container-low">
+<div class="max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter">
+<!-- Section Intro -->
+<div class="text-center max-w-2xl mx-auto space-y-space-xs mb-space-2xl">
+<span class="text-secondary font-label-sm text-label-sm uppercase tracking-widest font-semibold block">METHODOLOGY &amp; SOURCING</span>
+<h2 class="font-headline-lg text-headline-lg text-primary font-normal">
+          From Alpine Peak to Micro-Lipid Emulsion
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          The four distinct chapters of our formulation architecture, tracing the lifespan of each botanical active from ethical harvesting to certified release.
+        </p>
+</div>
+<!-- 4 Horizontal Step Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Step 01 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">STAGE 01</span>
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">altitude</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">Sustainable Wildcrafting</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Harvested above 2,400 meters in the Swiss Alps, where intense UV exposure forces flora like Leontopodium alpinum to produce dense concentrations of antioxidant leontopodic acid.
+            </p>
+</div>
+<div class="pt-space-xs text-[11px] font-label-sm uppercase tracking-wider text-outline">
+            ORIGIN: VALAIS HIGH ALPS
+          </div>
+</div>
+<!-- Step 02 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">STAGE 02</span>
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">ac_unit</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">Cryo-Supercritical Extraction</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Zero thermal degradation. We utilize sub-zero liquefied carbon dioxide extraction to isolate delicate active flavonoids and terpenes without harsh synthetic petroleum solvents.
+            </p>
+</div>
+<div class="pt-space-xs text-[11px] font-label-sm uppercase tracking-wider text-outline">
+            SOLVENTLESS // -40°C PROCESS
+          </div>
+</div>
+<!-- Step 03 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">STAGE 03</span>
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">bubble_chart</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">Micro-Lipid Encapsulation</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Sub-micron phospholipid carriers wrap bioactive peptides, shuttling them past the outer barrier stratum directly to target receptors before gently releasing their nutrient payload.
+            </p>
+</div>
+<div class="pt-space-xs text-[11px] font-label-sm uppercase tracking-wider text-outline">
+            180NM DELIVERY SYSTEM
+          </div>
+</div>
+<!-- Step 04 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between space-y-space-md">
+<div class="space-y-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">STAGE 04</span>
+<div class="w-12 h-12 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">qr_code_2</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-medium">Monograph Batch Numbering</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              No continuous mass-tank production. Every batch of 1,200 units receives an individual analytical Certificate of Analysis, stamped with exact active yields and safety monographs.
+            </p>
+</div>
+<div class="pt-space-xs text-[11px] font-label-sm uppercase tracking-wider text-outline">
+            SERIALIZED CERTIFICATION
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 5: The Laboratory Standards & Clinical Rigor Grid -->
+<section class="w-full py-space-3xl bg-surface" id="clinical-protocols">
+<div class="max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<!-- Rigor Stats Column -->
+<div class="lg:col-span-5 space-y-space-lg">
+<div class="space-y-space-xs">
+<span class="text-secondary font-label-sm text-label-sm uppercase tracking-widest font-semibold block">EMPIRICAL BENCHMARKS</span>
+<h2 class="font-headline-lg text-headline-lg text-primary font-normal">
+              Clinical Discipline, Not Cosmetic Assumption.
+            </h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Our dual Swiss and US laboratories adhere to GLP (Good Laboratory Practice) guidelines. We validate our claims not with self-assessment surveys, but through clinical corneometry, evaporimetry, and 3D high-resolution profilometry.
+          </p>
+<!-- Interactive Metric List -->
+<div class="space-y-space-sm pt-space-xs">
+<div class="p-space-md bg-surface-container-low rounded-lg flex items-center justify-between">
+<div class="space-y-0.5">
+<span class="font-label-md text-label-md text-primary font-semibold block">Independent Patch Safety Trials</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">48-hour occlusive human repeated insult (HRIPT)</span>
+</div>
+<span class="font-label-lg text-label-lg font-bold text-tertiary-container">100% NON-REACTIVE</span>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-lg flex items-center justify-between">
+<div class="space-y-0.5">
+<span class="font-label-md text-label-md text-primary font-semibold block">Heavy Metal &amp; Contaminant Screen</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Inductively coupled plasma mass spectrometry</span>
+</div>
+<span class="font-label-lg text-label-lg font-bold text-secondary">&lt; 0.01 PPM DETECT</span>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-lg flex items-center justify-between">
+<div class="space-y-0.5">
+<span class="font-label-md text-label-md text-primary font-semibold block">Cold-Chain Formulation Integrity</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Stored and processed strictly between 18°C and 22°C</span>
+</div>
+<span class="font-label-lg text-label-lg font-bold text-primary">MONITORED</span>
+</div>
+</div>
+</div>
+<!-- High Rigor Detail Grid / Macro Photography -->
+<div class="lg:col-span-7 bg-surface-container-low p-space-xl rounded-2xl space-y-space-lg shadow-sm">
+<div class="grid grid-cols-2 gap-space-md">
+<div class="bg-surface-container-lowest p-space-md rounded-xl space-y-space-xs">
+<span class="material-symbols-outlined text-secondary text-2xl">science</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">0% Filler Water</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Every droplet provides bioactive benefit to cellular membranes.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl space-y-space-xs">
+<span class="material-symbols-outlined text-tertiary-container text-2xl">cruelty_free</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">Leaping Bunny</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">100% cruelty-free certified across all international supply lines.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl space-y-space-xs">
+<span class="material-symbols-outlined text-secondary text-2xl">sanitizer</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">Zero Synthetic Odor</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Natural aromas derived strictly from pure unadulterated extracts.</p>
+</div>
+<div class="bg-surface-container-lowest p-space-md rounded-xl space-y-space-xs">
+<span class="material-symbols-outlined text-tertiary-container text-2xl">verified_user</span>
+<h4 class="font-headline-sm text-headline-sm text-primary">Dermatologist Validated</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Clinically verified safe for hypersensitive and rosacea-prone skin.</p>
+</div>
+</div>
+<div class="p-space-md bg-secondary-container/40 rounded-xl flex items-center gap-space-md">
+<span class="material-symbols-outlined text-secondary text-3xl">policy</span>
+<div class="text-on-secondary-container">
+<p class="font-label-md text-label-md font-semibold">Open Research Initiative</p>
+<p class="font-body-sm text-body-sm">Every customer has open access to our analytical monographs and third-party laboratory verification certificates upon request.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: Sustainability & The Packaging Manifesto -->
+<section class="w-full py-space-3xl bg-surface-container-low">
+<div class="max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter">
+<div class="bg-surface-container-lowest rounded-2xl p-space-xl md:p-space-2xl shadow-sm">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-6 space-y-space-md">
+<span class="text-secondary font-label-sm text-label-sm uppercase tracking-widest font-semibold block">CONSCIOUS ARCHITECTURE</span>
+<h2 class="font-headline-lg text-headline-lg text-primary font-normal">
+              The Packaging Manifesto: Circularity Without Compromise.
+            </h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+              Luxury skincare historically generates massive landfill waste through multi-layered acrylics and non-recyclable pumps. Zorvellae embraces strict material honesty: Miron Violetglass, infinitely recyclable aluminum, and mycelium shipping buffers.
+            </p>
+<!-- Metrics List -->
+<div class="grid grid-cols-2 gap-space-md pt-space-xs">
+<div class="space-y-0.5">
+<span class="font-headline-md text-headline-md text-primary font-bold">42%</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Reduction in packaging carbon footprint by utilizing minimalist glass weights.</p>
+</div>
+<div class="space-y-0.5">
+<span class="font-headline-md text-headline-md text-primary font-bold">100%</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Compostable mycelium cushions that return to soil within 45 days.</p>
+</div>
+</div>
+<div class="pt-space-sm flex items-center gap-space-sm text-on-surface font-label-md text-label-md uppercase tracking-wider">
+<span class="material-symbols-outlined text-secondary">recycling</span>
+<span>Refill Monograph Program Available for All Primary Serums</span>
+</div>
+</div>
+<div class="lg:col-span-6 overflow-hidden rounded-xl bg-surface-container shadow-inner aspect-[4/3]">
+<img class="w-full h-full object-cover" data-alt="Modern high luxury product still life of dark violet biophotonic glass skincare jars arranged on an ivory stone pedestal with recycled organic paper and delicate green botanical leaves in calm studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8WT6oaCiKTWAqKtcm_F7ktXRysrn9hucASbOUWyFjuuf315N10ZJuVc4-747QmM0bVSW2SMbfEUW1kg_83WwJMm0X5htfBoN6Z4OyxxqQFJDftOWH27nHr-YCrTOSt4lQsuhMPzzTTs9bNQsAiMYEos0fB0Z5MSlT2E3fuaLdDf4GHrZGTqEQdJbCbFgiMwYYZrUMiSICKEC8SBRF9mlMWRix1bAS3hGWtkpP4xc"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 7: Invitation CTA & Diagnostic Engine Bridge -->
+<section class="w-full py-space-3xl bg-surface">
+<div class="max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter">
+<div class="bg-surface-container-high rounded-2xl p-space-2xl md:p-space-3xl text-center max-w-4xl mx-auto space-y-space-lg shadow-sm">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm uppercase tracking-widest font-semibold">
+          YOUR CELLULAR RITUAL AWAITS
+        </span>
+<h2 class="font-headline-xl text-headline-xl text-primary font-normal leading-tight">
+          Experience the Confluence of Botanical Science and Sensory Grace.
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+          Allow our clinical diagnostics to pinpoint the precise botanical lipid ratio required by your skin's unique cellular microclimate.
+        </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-space-md pt-space-xs">
+<a class="w-full sm:w-auto inline-flex items-center justify-center h-12 px-space-xl bg-primary text-on-primary font-label-lg text-label-lg uppercase tracking-wider rounded shadow hover:bg-primary-container transition-colors" href="#">
+            Explore All Formulations
+          </a>
+<button class="w-full sm:w-auto inline-flex items-center justify-center h-12 px-space-xl bg-surface-container-lowest text-primary font-label-lg text-label-lg uppercase tracking-wider rounded shadow-sm hover:bg-surface-container transition-colors" onclick="alert('Launching Zorvellae Skin Diagnostic Engine...');" type="button">
+            Take 2-Minute Diagnostic
+          </button>
+</div>
+<div class="pt-space-md flex flex-wrap items-center justify-center gap-space-lg font-label-sm text-label-sm uppercase tracking-widest text-outline">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">local_shipping</span> Complimentary US &amp; Swiss Shipping</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">redeem</span> 3 Clinical Samples With Every Order</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">lock</span> 30-Day Dermal Guarantee</span>
+</div>
+</div>
+</div>
+</section>
+</div></main><footer class="w-full bg-primary-container text-on-primary border-t border-primary/10"><div class="max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter pt-space-2xl pb-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter"><div class="lg:col-span-4 space-y-space-md"><div class="flex items-center gap-space-sm"><span class="font-headline-md text-headline-md text-primary-fixed">ZORVELLAE</span></div><p class="font-body-sm text-body-sm text-on-primary-container max-w-sm leading-relaxed">Evidence-informed, transparent, botanical clinical formulations. Bridging dermatological rigor with sensory restorative rituals.</p><div class="pt-space-xs"><span class="inline-flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-wider px-space-sm py-space-xs rounded bg-tertiary-container text-tertiary-fixed border border-tertiary-fixed/20"><span class="material-symbols-outlined text-[14px]">eco</span>Clean Clinical Certified</span></div></div><div class="lg:col-span-2 space-y-space-sm"><h3 class="font-label-md text-label-md uppercase tracking-widest text-primary-fixed">Shop</h3><ul class="space-y-space-xs font-body-sm text-body-sm text-on-primary-container"><li><a class="hover:text-primary-fixed transition-colors" data-path="shop-all" href="#">Cleansers &amp; Essences</a></li><li><a class="hover:text-primary-fixed transition-colors" data-path="shop-all" href="#">Targeted Serums</a></li><li><a class="hover:text-primary-fixed transition-colors" data-path="shop-all" href="#">Barrier Creams</a></li><li><a class="hover:text-primary-fixed transition-colors" data-path="shop-all" href="#">Eye Treatments</a></li><li><a class="hover:text-primary-fixed transition-colors" data-path="best-sellers" href="#">Curated Ritual Bundles</a></li></ul></div><div class="lg:col-span-2 space-y-space-sm"><h3 class="font-label-md text-label-md uppercase tracking-widest text-primary-fixed">Skin Science</h3><ul class="space-y-space-xs font-body-sm text-body-sm text-on-primary-container"><li><a class="hover:text-primary-fixed transition-colors" data-path="our-science" href="#">Clinical Trial Data</a></li><li><a class="hover:text-primary-fixed transition-colors" data-path="our-science" href="#">Ingredient Transparency</a></li><li><a class="hover:text-primary-fixed transition-colors" data-path="routines" href="#">Routine Architecture</a></li><li><a class="hover:text-primary-fixed transition-colors" data-path="our-science" href="#">Sustainability &amp; Refills</a></li></ul></div><div class="lg:col-span-4 space-y-space-md"><h3 class="font-label-md text-label-md uppercase tracking-widest text-primary-fixed">Join the Zorvellae Circle</h3><p class="font-body-sm text-body-sm text-on-primary-container">Receive 15% off your first ritual, private invitations to clinical monograph releases, and botanical skincare formulation notes.</p><form class="flex items-center gap-space-xs" onsubmit="return false;"><input class="flex-1 bg-surface-container-lowest text-on-surface font-body-sm text-body-sm px-space-md py-space-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-primary-fixed" placeholder="Enter your email" type="email"/><button class="bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md uppercase tracking-wider px-space-md py-space-sm rounded-lg hover:bg-secondary-fixed-dim transition-colors" type="submit">Subscribe</button></form></div></div><div class="mt-space-xl pt-space-md border-t border-on-primary-container/20 flex flex-col md:flex-row items-center justify-between gap-space-md"><p class="font-body-sm text-body-sm text-on-primary-container">© 2025 ZORVELLAE Laboratories Inc. All formulations clinical grade. Simulation research platform.</p><div class="flex flex-wrap items-center gap-space-md font-label-sm text-label-sm uppercase tracking-wider text-on-primary-container"><a class="hover:text-primary-fixed transition-colors" data-path="accessibility" href="#">WCAG 2.2 AA Compliant</a><a class="hover:text-primary-fixed transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="hover:text-primary-fixed transition-colors" data-path="terms-of-service" href="#">Terms of Service</a><span class="text-primary-fixed">United States (USD $)</span></div></div></div></footer>
+</body></html>

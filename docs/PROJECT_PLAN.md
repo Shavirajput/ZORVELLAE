@@ -3,7 +3,7 @@
 **Project Name:** ZORVELLAE<br>
 **Type:** Full-Stack E-Commerce Website<br>
 **Stack:** MERN (MongoDB, Express.js, React.js, Node.js)<br>
-**Status:** 🟡 Planning Phase — Awaiting Approval
+**Status:** 🟡 Implementation in progress — see `FEATURES.md` and `PROJECT_AUDIT.md`
 
 ---
 
@@ -15,7 +15,7 @@ ZORVELLAE is a premium botanical clinical skincare brand requiring a bespoke e-c
 
 ## Reference Sources Analysed
 
-### Approved PDF Designs (14 files)
+### Approved PDF References (13 local files; one listed item is unavailable)
 
 | # | PDF File | Page Mapped To |
 |---|----------|----------------|
@@ -32,7 +32,7 @@ ZORVELLAE is a premium botanical clinical skincare brand requiring a bespoke e-c
 | 11 | `ZORVELLAE — Client Account & Monograph History.pdf` | Customer Account Page |
 | 12 | `ZORVELLAE — Contact Us.pdf` | Contact Us Page |
 | 13 | `ZORVELLAE — Message Received.pdf` | Contact Confirmation Page |
-| 14 | `ZORVELLAE — Global Interaction States Suite.pdf` | UI State Reference (Design QA) |
+| 14 | `ZORVELLAE — Global Interaction States Suite.pdf` | UI State Reference (Design QA; not present in the local PDF directory) |
 
 ### Stitch HTML Exports (23 concepts across 22 folders)
 

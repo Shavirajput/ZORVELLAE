@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>ZORVELLAE — Science-Led Botanical Skincare</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary-fixed-variant": "#53443a", "surface-container": "#f0eee8", "secondary": "#735949", "on-tertiary-container": "#798e7c", "surface-container-lowest": "#ffffff", "error": "#ba1a1a", "outline-variant": "#d1c4bd", "outline": "#80756f", "background": "#fcf9f3", "on-error-container": "#93000a", "tertiary": "#000e04", "surface-bright": "#fcf9f3", "tertiary-container": "#132518", "secondary-fixed-dim": "#e1c0ac", "on-secondary-fixed-variant": "#594232", "on-secondary-fixed": "#29170b", "inverse-primary": "#d8c2b6", "secondary-fixed": "#ffdcc6", "tertiary-fixed": "#d2e8d4", "primary-container": "#2b1f17", "secondary-container": "#ffdcc6", "surface": "#fcf9f3", "on-tertiary": "#ffffff", "inverse-surface": "#31312d", "on-tertiary-fixed-variant": "#384b3c", "surface-dim": "#dcdad4", "on-background": "#1c1c18", "on-primary-container": "#98857a", "inverse-on-surface": "#f3f0ea", "surface-container-highest": "#e5e2dc", "on-surface": "#1c1c18", "surface-container-high": "#ebe8e2", "on-secondary-container": "#795f4e", "primary-fixed": "#f5ded1", "surface-container-low": "#f6f3ed", "surface-tint": "#6b5b51", "tertiary-fixed-dim": "#b7ccb8", "on-secondary": "#ffffff", "surface-variant": "#e5e2dc", "on-primary-fixed": "#251911", "primary": "#120904", "on-error": "#ffffff", "error-container": "#ffdad6", "primary-fixed-dim": "#d8c2b6", "on-primary": "#ffffff", "on-surface-variant": "#4e4540" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.25rem", "space-xl": "2.5rem", "gutter-mobile": "1rem", "gutter": "1.5rem", "space-3xl": "6rem", "space-md": "1rem", "space-sm": "0.5rem", "space-2xl": "4rem", "margin-mobile": "1rem", "space-lg": "1.5rem", "margin": "2rem" }, "fontFamily": { "headline-sm": [ "Playfair Display" ], "body-sm": [ "Inter" ], "headline-xl-mobile": [ "Playfair Display" ], "label-sm": [ "Inter" ], "headline-md": [ "Playfair Display" ], "headline-lg": [ "Playfair Display" ], "headline-lg-mobile": [ "Playfair Display" ], "label-md": [ "Inter" ], "headline-xl": [ "Playfair Display" ], "body-md": [ "Inter" ], "label-lg": [ "Inter" ], "body-lg": [ "Inter" ] }, "fontSize": { "headline-sm": [ "22px", { "lineHeight": "30px", "letterSpacing": "0.01em", "fontWeight": "500" } ], "body-sm": [ "13px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "400" } ], "headline-xl-mobile": [ "36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "label-sm": [ "10px", { "lineHeight": "14px", "letterSpacing": "0.15em", "fontWeight": "600" } ], "headline-md": [ "28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "500" } ], "headline-lg": [ "40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "400" } ], "headline-lg-mobile": [ "28px", { "lineHeight": "36px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-md": [ "12px", { "lineHeight": "16px", "letterSpacing": "0.12em", "fontWeight": "600" } ], "headline-xl": [ "56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" } ], "body-md": [ "15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" } ], "label-lg": [ "14px", { "lineHeight": "20px", "letterSpacing": "0.08em", "fontWeight": "600" } ], "body-lg": [ "18px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "400" } ] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-secondary-container selection:text-on-secondary-container"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="bg-surface-container-low py-2 px-gutter-mobile md:px-gutter text-center border-b border-primary/5"><p class="font-label-sm text-[11px] uppercase tracking-widest text-[#2B1F17] font-medium">THOUGHTFUL SKINCARE. SCIENCE-LED FORMULATIONS.</p></div><div class="h-20 max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter flex items-center justify-between gap-gutter"><div class="flex items-center"><a class="inline-flex items-center hover:opacity-90 transition-opacity" href="/"><img alt="ZORVELLAE - Science-Led Skincare" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa6PacCNEFmqJ4pDO5maCJ2m0vm3wjIMI2gO3UV7XjjP0cDMffhoBJ2XHZ0vs23hQe3wChLcJzd8-T3vhAK4GM33aT6ToMJkWKlsXtXt_ipZYgjB4qY2ryD1EojplRJb8nbXDUAY3t2kTqV3C2ZMFdJswAK_uTNTkDoYoFn0297ycYa7aTcK3K7aPsyxUEmiroYOyFp0B5vSoMb_kqtVPG9cZr0_UNlbcEYBZFjjkwQMFP-6uoxz7f"/></a></div><nav class="hidden lg:flex items-center gap-space-lg"><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#">Shop</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#">Skin Concerns</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#">Skincare Routines</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#">Our Science</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#">Ingredients</a><a class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors" href="#">About Us</a></nav><div class="flex items-center gap-space-md"><button aria-label="Search" class="text-primary hover:text-secondary transition-colors flex items-center justify-center p-1"><span class="material-symbols-outlined text-[22px]">search</span></button><button aria-label="Account" class="text-primary hover:text-secondary transition-colors flex items-center justify-center p-1"><span class="material-symbols-outlined text-[22px]">person</span></button><button aria-label="Shopping Bag" class="text-primary hover:text-secondary transition-colors relative flex items-center justify-center p-1"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="absolute -top-1 -right-1 bg-primary text-on-primary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">1</span></button></div></div></header><main class="w-full pt-20 bg-surface min-h-screen"><div class="flex flex-col w-full text-on-surface">
+<!-- Subtle Header Separator / Breadcrumb Trail -->
+<div class="w-full bg-surface-container-low/60 py-3">
+<div class="max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter flex items-center justify-between">
+<nav aria-label="Breadcrumb" class="flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Home</a>
+<span class="text-outline-variant">/</span>
+<a class="hover:text-primary transition-colors" href="#">Targeted Serums</a>
+<span class="text-outline-variant">/</span>
+<span class="text-primary font-semibold">Ceramide + Bio-Peptide Barrier Serum</span>
+</nav>
+<div class="hidden md:flex items-center gap-space-sm font-label-sm text-label-sm uppercase tracking-widest text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span>
+        Batch No. 048-LND · High Stability Grade
+      </div>
+</div>
+</div>
+<!-- Primary PDP Presentation Canvas: 2-Column Bespoke Architecture -->
+<section class="max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter pt-space-xl pb-space-3xl w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter lg:gap-space-xl items-start">
+<!-- Gallery Column (7 cols on desktop for editorial prominence) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- Main Stage Image Container -->
+<div class="relative w-full aspect-[4/5] bg-surface-container-low rounded-xl overflow-hidden flex items-center justify-center group shadow-sm">
+<img class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]" data-alt="Editorial macro photograph of a frosted glass treatment bottle and amber glass dropper bottle sitting on travertine stone plinth, warm studio sunlight casting soft olive branch shadows on cream ivory wall, luxury clinical skincare aesthetic" id="main-stage-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANKqAtsZMtGdAddEnm6IF8T_hWNc_v8--cXklJsdh62LNO78RbwcDwrZ6suH4uA_Sp8Rc1ioAweCXHaLEv4guDggScmlUETPdK8y1DAaZZV0WiX4USyP2k_IN4JdOioeLRbigXpu2LGiBbErM_3mMTTBUjG92BZH3LShDqhyYa3U79nHDytNgDB3gAFbUgUTIHFmPUhTdEgcpsgW0VJk13WTiC4fI1aFa2ANQh-4g"/>
+<!-- Floating Clinical Provenance Tags -->
+<div class="absolute top-space-md left-space-md flex flex-col gap-space-xs pointer-events-none">
+<span class="inline-flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-widest px-3 py-1.5 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-primary shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-[#6B7F6E]"></span>
+              Clinical Formulation
+            </span>
+<span class="inline-flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-wider px-3 py-1 rounded-full bg-secondary-fixed/90 backdrop-blur-md text-on-secondary-fixed font-medium">
+              Multi-Molecular Weight
+            </span>
+</div>
+<!-- Interactive Loupe Trigger Indicator -->
+<button class="absolute bottom-space-md right-space-md w-10 h-10 rounded-full bg-surface-container-lowest/90 backdrop-blur-md flex items-center justify-center text-primary shadow-sm hover:bg-surface-container-lowest transition-colors" onclick="inspectMacroImage()" title="Inspect Macro Details" type="button">
+<span class="material-symbols-outlined text-[20px]">zoom_in</span>
+</button>
+</div>
+<!-- Thumbnail Carousel Strip -->
+<div class="grid grid-cols-4 gap-space-sm pt-space-xs">
+<button class="gallery-thumb relative aspect-square rounded-lg overflow-hidden bg-surface-container-low ring-2 ring-primary transition-all cursor-pointer opacity-100" onclick="updateGalleryImage(this, 'Editorial macro photograph of a frosted glass treatment bottle and amber glass dropper bottle sitting on travertine stone plinth, warm studio sunlight casting soft olive branch shadows on cream ivory wall, luxury clinical skincare aesthetic')" type="button">
+<img class="w-full h-full object-cover" data-alt="Primary hero bottle and pipette dropper on warm travertine stone in morning laboratory light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATQgC4cRfF8wKWMOzZSkyHk4Zsw9TITPnClJx3YX2-AreJqEaNgMonTY71uLfl8j0F0RRlVWMVUI-2hvX5z3wU2gBNB1TQn1sWiwjl66opniPw0g0j48tq5rvn2eGd9tYAC92ZcA1bQcQY0Hidq-cBx5SlOsyrC0CXCIq2GhjQQPWzpCoo9_2f5Q4z_9Gt5qq8KFii3gNRVuZNue3NQJ_WtuCKBtjk_9AavAK4lnc"/>
+<span class="absolute bottom-1 right-1 text-[9px] font-label-sm font-bold uppercase tracking-tighter bg-surface-container-lowest/90 text-primary px-1 rounded">01 Flacon</span>
+</button>
+<button class="gallery-thumb relative aspect-square rounded-lg overflow-hidden bg-surface-container-low transition-all cursor-pointer opacity-60 hover:opacity-100" onclick="updateGalleryImage(this, 'Viscous golden serum drop held on pipette tip against minimalist clean ivory background, capturing microscopic light refraction, molecular skincare texture swatch')" type="button">
+<img class="w-full h-full object-cover" data-alt="Macro viscous serum droplet suspended on precision glass pipette, illuminating golden lipid glow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwqU4jBS3nN_DBhimB1hlEbdffqfJwekGgBCuGddckv1yFfkqSHfPIySNy4CMyi0Ct1JyBINrT0B2LToo6OBcHmdrJxRBVVgWnXv0lEJMh0QO4lUTKuhudtb7OQ7XadYcuuD_YKDyQr6E8cO04MxDbZ4aIEcVVCtmvzYomL_3ZfXoOileCncnCtpA3jgy1WHG6waoK_9KQDSDsmGNc_4p8akZIqotGtMEuFYzq4Gs"/>
+<span class="absolute bottom-1 right-1 text-[9px] font-label-sm font-bold uppercase tracking-tighter bg-surface-container-lowest/90 text-primary px-1 rounded">02 Drop</span>
+</button>
+<button class="gallery-thumb relative aspect-square rounded-lg overflow-hidden bg-surface-container-low transition-all cursor-pointer opacity-60 hover:opacity-100" onclick="updateGalleryImage(this, 'Close-up texture swatch of rich, silky emulsion spread on clean surface, showing fine moisture micro-droplets and cellular restorative lipid consistency')" type="button">
+<img class="w-full h-full object-cover" data-alt="Texture swatch of silky lightweight emulsion cream-serum showing rapid skin absorbency and micro-spheres" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBESJjQ3dVsa3xhS1oSk-0Dytcks872WXfNtCJzPSaebS2_eOIAFDAcg3w1jI9_IFXgq7lD7wlUfDNqOA2AuC8i8LUe_IlPPjvuSdGjYQ4D5rP0Wqjq5pUnrt8um8UeIJp_x_rshhxnDrEdKQeBGV67VEDU90l1FCeOEr4-VC_ZDJMxm38VlsElAr9YaGBEuHTy2dXbEs4s12R3_IK-Liy5lJDXkvtZrUbwldee8ls"/>
+<span class="absolute bottom-1 right-1 text-[9px] font-label-sm font-bold uppercase tracking-tighter bg-surface-container-lowest/90 text-primary px-1 rounded">03 Viscosity</span>
+</button>
+<button class="gallery-thumb relative aspect-square rounded-lg overflow-hidden bg-surface-container-low transition-all cursor-pointer opacity-60 hover:opacity-100" onclick="updateGalleryImage(this, 'Botanical flatlay of Rosa Canina seeds, green squalane leaves, and delicate laboratory beaker with clean translucent serum sample, high-end apothecary photography')" type="button">
+<img class="w-full h-full object-cover" data-alt="Artfully arranged fresh Rosa Canina botanicals, fermented plant extracts, and laboratory volumetric glassware" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY-fmC2sGP50_igpvhz1vy8kH2SmPxZHEX7FqQtne6g70LwKTeZ1Zfg_90mAAlbe8dawql73ZjrXbExwiL4HNH27wNbyqNehDkaqd85YzEUBN3IynxznOJpLFFlIUfx-5-WzRbL5lWKMnF-10Jka8WWXMxyJ0xyJcahWMDsN_88xwe313UJKnz82RIDIafUwTI_Av_6fQBhI2y7Tf3LgdXodEYM3mc2G1xKiDFGAc"/>
+<span class="absolute bottom-1 right-1 text-[9px] font-label-sm font-bold uppercase tracking-tighter bg-surface-container-lowest/90 text-primary px-1 rounded">04 Origin</span>
+</button>
+</div>
+<!-- Botanical Laboratory Certification Strip -->
+<div class="mt-space-sm p-space-md rounded-xl bg-surface-container-low/70 flex items-center justify-between gap-space-sm text-on-surface-variant">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-wider text-primary">
+<span class="material-symbols-outlined text-[18px] text-[#6B7F6E]">biotech</span>
+<span>Non-Comedogenic</span>
+</div>
+<span class="h-3 w-[1px] bg-outline-variant"></span>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-wider text-primary">
+<span class="material-symbols-outlined text-[18px] text-[#6B7F6E]">spa</span>
+<span>100% Phyto-Derived</span>
+</div>
+<span class="h-3 w-[1px] bg-outline-variant"></span>
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-wider text-primary">
+<span class="material-symbols-outlined text-[18px] text-[#6B7F6E]">cruelty_free</span>
+<span>Leaping Bunny Certified</span>
+</div>
+</div>
+</div>
+<!-- Purchase Architecture Column (5 cols on desktop, sticky engagement) -->
+<div class="lg:col-span-5 flex flex-col pt-space-xs">
+<!-- Monograph & Batch Indicator -->
+<div class="flex items-center gap-space-xs mb-space-xs">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            CLINICAL SPECIFICATION · BATCH 048 // STEP 02 TREATMENT
+          </span>
+</div>
+<!-- Product Name & Core Action -->
+<h1 class="font-headline-lg text-headline-lg text-primary mb-space-xs tracking-tight">
+          Ceramide + Bio-Peptide Barrier Serum
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">
+          Bio-Identical Stratum Corneum Reconstruction &amp; Molecular Firming Elixir. Calms immediate micro-inflammation while reinforcing cellular cohesive lipid barriers.
+        </p>
+<!-- Ratings & Clinical Verification Badge -->
+<div class="flex items-center justify-between pb-space-md mb-space-md bg-gradient-to-r from-transparent via-surface-container/50 to-transparent p-space-sm rounded-lg">
+<div class="flex items-center gap-space-xs">
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<a class="font-label-md text-label-md text-primary font-semibold underline underline-offset-4 hover:text-secondary transition-colors" href="#reviews">
+              5.0 (428 Monograph Reviews)
+            </a>
+</div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-[#6B7F6E] bg-tertiary-fixed/40 px-2 py-0.5 rounded-full font-semibold">
+            99.4% Verified
+          </span>
+</div>
+<!-- Pricing Presentation -->
+<div class="flex items-baseline gap-space-sm mb-space-sm">
+<span class="font-headline-md text-headline-md text-primary font-medium" id="display-price">$68.00</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">or 4 installments of <span class="font-semibold text-primary" id="display-split">$17.00</span> with Afterpay</span>
+</div>
+<!-- Volume Format Selection -->
+<div class="mb-space-md">
+<div class="flex justify-between items-center mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Volume Specification</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Standard 60-day supply</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<button class="volume-pill p-space-sm rounded-lg bg-surface-container-lowest ring-2 ring-primary text-left flex items-center justify-between transition-all" onclick="selectVolume(this, 68.00, '30ml / 1.0 fl oz')" type="button">
+<div>
+<p class="font-label-md text-label-md font-semibold text-primary">30ml / 1.0 fl oz</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">$68.00</p>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px] check-icon">check_circle</span>
+</button>
+<button class="volume-pill p-space-sm rounded-lg bg-surface-container-low text-left flex items-center justify-between transition-all hover:bg-surface-container hover:shadow-sm" onclick="selectVolume(this, 98.00, '50ml Jumbo / 1.7 fl oz')" type="button">
+<div>
+<div class="flex items-center gap-1">
+<p class="font-label-md text-label-md font-semibold text-primary">50ml Jumbo</p>
+<span class="font-label-sm text-[9px] uppercase px-1.5 py-0.2 rounded bg-secondary-fixed text-on-secondary-fixed font-bold">Save 15%</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">$98.00</p>
+</div>
+<span class="material-symbols-outlined text-transparent text-[20px] check-icon">check_circle</span>
+</button>
+</div>
+</div>
+<!-- Subscription / Frequency Selector Architecture -->
+<div class="space-y-space-xs mb-space-lg">
+<!-- Subscription Option -->
+<label class="cursor-pointer block relative p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all">
+<div class="flex items-start gap-space-sm">
+<input checked="" class="mt-1 accent-primary w-4 h-4 cursor-pointer" name="purchase_frequency" onchange="togglePurchaseMode('subscription')" type="radio" value="subscription"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-md text-label-md font-bold text-primary">Replenish &amp; Save 15%</span>
+<span class="font-label-sm text-label-sm uppercase bg-[#6B7F6E]/15 text-[#384B3C] px-2 py-0.5 rounded-full font-bold">Recommended</span>
+</div>
+<span class="font-label-lg text-label-lg font-bold text-primary" id="sub-price-tag">$57.80</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Delivered fresh every 60 days. Includes complimentary travel miniatures and effortless cancellation.</p>
+</div>
+</div>
+</label>
+<!-- One-Time Purchase Option -->
+<label class="cursor-pointer block relative p-space-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all">
+<div class="flex items-start gap-space-sm">
+<input class="mt-1 accent-primary w-4 h-4 cursor-pointer" name="purchase_frequency" onchange="togglePurchaseMode('onetime')" type="radio" value="onetime"/>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-primary">One-Time Monograph Purchase</span>
+<span class="font-label-lg text-label-lg font-semibold text-primary" id="one-time-price-tag">$68.00</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Single dispensation without routine subscription commitments.</p>
+</div>
+</div>
+</label>
+</div>
+<!-- Quantity & Add to Cart Action -->
+<div class="flex items-center gap-space-sm mb-space-md">
+<!-- Quantity Stepper -->
+<div class="flex items-center justify-between bg-surface-container-low rounded-lg px-space-sm py-2 w-32 shrink-0">
+<button aria-label="Decrease quantity" class="w-7 h-7 flex items-center justify-center text-primary hover:text-secondary transition-colors" onclick="adjustQty(-1)" type="button">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<span class="font-label-md text-label-md font-bold text-primary" id="product-qty">1</span>
+<button aria-label="Increase quantity" class="w-7 h-7 flex items-center justify-center text-primary hover:text-secondary transition-colors" onclick="adjustQty(1)" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+<!-- Master Action Button -->
+<button class="flex-1 bg-primary text-on-primary font-label-lg text-label-lg uppercase tracking-widest py-3.5 px-space-lg rounded-lg shadow-md hover:bg-secondary transition-all duration-300 flex items-center justify-center gap-space-sm group" id="main-cart-btn" onclick="triggerCartNotification()" type="button">
+<span class="material-symbols-outlined text-[20px] transition-transform duration-300 group-hover:scale-110">shopping_bag</span>
+<span id="cta-button-text">Add to Skin Ritual — $57.80</span>
+</button>
+</div>
+<!-- Formulation Guarantee Badges -->
+<div class="grid grid-cols-3 gap-space-xs pt-space-xs pb-space-md text-center">
+<div class="p-space-xs rounded bg-surface-container-low/50">
+<span class="material-symbols-outlined text-[20px] text-secondary">local_shipping</span>
+<p class="font-label-sm text-[11px] font-semibold text-primary mt-1">Expedited Post</p>
+<p class="font-body-sm text-[11px] text-on-surface-variant">Free over $65</p>
+</div>
+<div class="p-space-xs rounded bg-surface-container-low/50">
+<span class="material-symbols-outlined text-[20px] text-secondary">science</span>
+<p class="font-label-sm text-[11px] font-semibold text-primary mt-1">3 Lab Samples</p>
+<p class="font-body-sm text-[11px] text-on-surface-variant">Selected at checkout</p>
+</div>
+<div class="p-space-xs rounded bg-surface-container-low/50">
+<span class="material-symbols-outlined text-[20px] text-secondary">verified_user</span>
+<p class="font-label-sm text-[11px] font-semibold text-primary mt-1">Dermal Guarantee</p>
+<p class="font-body-sm text-[11px] text-on-surface-variant">30 days trial period</p>
+</div>
+</div>
+<!-- Quick Monograph Specification Metadata -->
+<div class="mt-space-xs bg-surface-container-lowest p-space-md rounded-xl space-y-space-sm shadow-sm">
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Skin Targets</span>
+<span class="font-body-sm text-body-sm font-medium text-primary text-right">Compromised barrier, redness, TEWL, loss of elasticity</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Cellular Viscosity</span>
+<span class="font-body-sm text-body-sm font-medium text-primary text-right">Silky bio-lipid micro-emulsion (Zero tacky residue)</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Aromachology</span>
+<span class="font-body-sm text-body-sm font-medium text-primary text-right">100% Fragrance-Free (Subtle natural lipid note)</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- In-Vivo Clinical Efficacy Section (Empirical Science Monograph) -->
+<section class="w-full bg-surface-container-low py-space-3xl">
+<div class="max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter">
+<!-- Section Header -->
+<div class="max-w-3xl mb-space-2xl">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold mb-space-xs">
+<span class="material-symbols-outlined text-[16px]">biotech</span>
+<span>EMPIRICAL TRIAL REPORT · VOL. IV</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-primary font-normal leading-tight">
+          Documented Dermal Reconstruction.
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-space-sm">
+          A double-blind, dermatologist-supervised 28-day clinical assessment evaluated on 60 participants exhibiting impaired epidermal integrity and accelerated trans-epidermal water loss.
+        </p>
+</div>
+<!-- 3 Impact Metric Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-space-xl">
+<!-- Metric Card 1 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">Instrumental Corneometer</span>
+<div class="font-headline-xl text-[54px] leading-tight text-primary font-medium mt-space-sm mb-space-xs">
+              +142%
+            </div>
+<p class="font-body-md text-body-md font-semibold text-primary">Hydration Retention at 48 Hours</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+              Statistically significant stratum corneum moisture entrapment recorded via electrical capacitance post single dose.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-md flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-[11px] uppercase tracking-wider">In-Vivo Assay</span>
+<span class="font-label-sm text-[11px] font-bold text-primary">p &lt; 0.001</span>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-[#6B7F6E] font-semibold">Tewameter® Vapor Flux</span>
+<div class="font-headline-xl text-[54px] leading-tight text-primary font-medium mt-space-sm mb-space-xs">
+              -96%
+            </div>
+<p class="font-body-md text-body-md font-semibold text-primary">TEWL Reduction in 14 Days</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+              Accelerated closure of micro-fissures in compromised skin, halting cellular moisture depletion across all phototypes.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-md flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-[11px] uppercase tracking-wider">Barrier Seal</span>
+<span class="font-label-sm text-[11px] font-bold text-primary">100% Cohort Success</span>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">Clinical Subjective Score</span>
+<div class="font-headline-xl text-[54px] leading-tight text-primary font-medium mt-space-sm mb-space-xs">
+              98%
+            </div>
+<p class="font-body-md text-body-md font-semibold text-primary">Confirmed Redness Relief</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+              Subjects reported instantaneous soothing of reactive prickling, erythema, and tactile roughness within 7 calendar days.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-md flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-[11px] uppercase tracking-wider">Visual Erythema Assay</span>
+<span class="font-label-sm text-[11px] font-bold text-primary">Day 7 Milestone</span>
+</div>
+</div>
+</div>
+<!-- Clinical Trial Methodology Signature Strip -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-primary font-headline-sm">
+            Ψ
+          </div>
+<div>
+<p class="font-label-md text-label-md uppercase tracking-wider text-primary font-bold">ZORVELLAE Dermal Research Laboratory</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Validated under Good Laboratory Practice (GLP) protocol #ZV-2024-C9.</p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant">Dermatologist Verified</span>
+<span class="material-symbols-outlined text-[#6B7F6E] text-[22px]">verified</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Bio-Active Formulation Breakdown Tabs -->
+<section class="max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter py-space-3xl w-full">
+<div class="max-w-3xl mb-space-xl">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">Transparent Formulation</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mt-space-xs">
+        Every Active Molecule Disclosed.
+      </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+        We eschew proprietary filler blends. Here is precisely what enters your epidermis and the exact biochemical mechanism powering each constituent.
+      </p>
+</div>
+<!-- Tab Navigation Pills -->
+<div class="flex items-center gap-space-sm mb-space-xl overflow-x-auto pb-2">
+<button class="formulation-tab-btn px-space-md py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-primary text-on-primary transition-all cursor-pointer" onclick="switchFormulationTab(0)" type="button">
+        01 Key Bio-Actives
+      </button>
+<button class="formulation-tab-btn px-space-md py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer" onclick="switchFormulationTab(1)" type="button">
+        02 Routine Layering
+      </button>
+<button class="formulation-tab-btn px-space-md py-2.5 rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface hover:bg-surface-container-high transition-all cursor-pointer" onclick="switchFormulationTab(2)" type="button">
+        03 Circular Flacon &amp; Refills
+      </button>
+</div>
+<!-- Tab Content Panels -->
+<div class="w-full">
+<!-- Panel 1: Bio-Actives Bento Grid -->
+<div class="tab-panel grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter" id="tab-panel-0">
+<!-- Active 1 -->
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest px-2.5 py-1 rounded bg-[#6B7F6E]/15 text-[#384B3C] font-semibold">3.0% Potency</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Lipid Rebuilder</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Multi-Ceramide Complex</h3>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-space-sm">Ceramides NP, AP, EOP + Phytosphingosine</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Bio-mimetic 3:1:1 lipid structure that re-glues disrupted corneocyte cells, halting allergen intrusion and reinforcing natural moisture seals.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center gap-space-xs text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-[#6B7F6E]">check_circle</span>
+            Natural Human Stratum Corneum Ratio
+          </div>
+</div>
+<!-- Active 2 -->
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest px-2.5 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-semibold">2000ppm</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Oligopeptide</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Acetyl Hexapeptide-8</h3>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-space-sm">Cellular Signal Messenger</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              High-precision micro-peptide engineered to stimulate collagen type-I synthesis while moderating dermal stress micro-tensions for lifted elasticity.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center gap-space-xs text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-[#6B7F6E]">check_circle</span>
+            Targets Expression Stress Lines
+          </div>
+</div>
+<!-- Active 3 -->
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest px-2.5 py-1 rounded bg-surface-container-highest text-primary font-semibold">5.0% Clinical</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Vitamin B3</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Ultra-Purified Niacinamide</h3>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-space-sm">Residual Nicotinic Acid &lt; 50ppm</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Clinical grade purity eliminates the flushing common in generic serums. Regulates sebum oxidation and normalizes cellular lipid synthesis.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center gap-space-xs text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-[#6B7F6E]">check_circle</span>
+            Zero Erythema Flushing Profile
+          </div>
+</div>
+<!-- Active 4 -->
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest px-2.5 py-1 rounded bg-[#6B7F6E]/15 text-[#384B3C] font-semibold">Eco-Ferment</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Botanical Lipid</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Rosa Canina + Squalane</h3>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-space-sm">Cane-Sugar Derived Hemi-Squalane</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Enzymatically split plant squalane with ultra-low viscosity provides an instantaneous cushion feel without occlusive, pore-clogging wax residue.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center gap-space-xs text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-[#6B7F6E]">check_circle</span>
+            Rapid Trans-Dermal Diffusion
+          </div>
+</div>
+<!-- Active 5 -->
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest px-2.5 py-1 rounded bg-secondary-fixed text-on-secondary-fixed font-semibold">5 Molecular Tiers</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Humectant Matrix</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Cross-Linked Hyaluronate</h3>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-space-sm">3kDa to 2000kDa Poly-Polymer</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Low-weight molecules penetrate sub-epidermal matrices while high-weight polymers create an invisible, breathable hydra-shield on the surface.
+            </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center gap-space-xs text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-[#6B7F6E]">check_circle</span>
+            Sustained 48-Hour Reservoir
+          </div>
+</div>
+<!-- Full INCI Accordion Box -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex justify-between items-start mb-space-sm">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">100% Transparency</span>
+<span class="material-symbols-outlined text-primary text-[20px]">assignment</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Complete INCI Monograph</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Aqua (Water), Glycerin, Niacinamide, Squalane, Ceramide NP, Ceramide AP, Ceramide EOP, Phytosphingosine, Acetyl Hexapeptide-8, Rosa Canina Fruit Extract, Sodium Hyaluronate Crosspolymer, Phospholipids, Allantoin, Caprylyl Glycol, Tocopherol.
+            </p>
+</div>
+<p class="mt-space-md font-label-sm text-label-sm uppercase tracking-wider text-secondary">
+            No Parabens · No Phthalates · No Artificial Dyes
+          </p>
+</div>
+</div>
+<!-- Panel 2: Routine Layering Guide (Hidden by default) -->
+<div class="tab-panel hidden grid grid-cols-1 md:grid-cols-3 gap-gutter" id="tab-panel-1">
+<div class="bg-surface-container-low p-space-lg rounded-xl">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">01 Prepare</span>
+<h4 class="font-headline-sm text-headline-sm text-primary my-space-xs">Damp Cellular Cleanse</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Cleanse face with lukewarm water and a low-pH cleanser. Leave skin damp—water acts as a natural carrier matrix for low molecular hyaluronic acid.
+          </p>
+</div>
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm ring-1 ring-primary/10">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-[#6B7F6E] font-bold">02 Treat (Current Step)</span>
+<h4 class="font-headline-sm text-headline-sm text-primary my-space-xs">Dispense 3–4 Drops</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Gently warm drops between palms. Press—do not aggressively rub—into face, neck, and decollete until absorbed in 30 seconds.
+          </p>
+</div>
+<div class="bg-surface-container-low p-space-lg rounded-xl">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">03 Seal</span>
+<h4 class="font-headline-sm text-headline-sm text-primary my-space-xs">Occlusive Barrier Lock</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Follow immediately with ZORVELLAE Squalane Rosehip Rich Cream to lock the bio-peptides within the stratum spinosum layer.
+          </p>
+</div>
+</div>
+<!-- Panel 3: Packaging & Circularity (Hidden by default) -->
+<div class="tab-panel hidden grid grid-cols-1 md:grid-cols-2 gap-gutter" id="tab-panel-2">
+<div class="bg-surface-container-low p-space-lg rounded-xl">
+<h4 class="font-headline-sm text-headline-sm text-primary mb-space-xs">UV-Shielding German Amber Glass</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Our pharmaceutical amber flacons block 99% of actinic wavelengths, protecting bio-active peptides and cold-pressed botanical lipids from photo-oxidation without aggressive chemical stabilizers.
+          </p>
+</div>
+<div class="bg-surface-container-low p-space-lg rounded-xl">
+<h4 class="font-headline-sm text-headline-sm text-primary mb-space-xs">Effortless Cartridge Refill Loop</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Retain the precision calibrated pipette cap. Order our 100% recycled glass refill flacons to eliminate 85% of secondary packaging waste and save $12 per replenishment.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Frequently Bought Together / The Complete Barrier Ritual -->
+<section class="w-full bg-surface-container-low py-space-3xl">
+<div class="max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter">
+<div class="max-w-2xl mb-space-xl">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">Clinical Synergies</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mt-space-xs">
+          The Complete Barrier Reconstruction Ritual
+        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-space-xs">
+          Formulated to compound clinical efficacy. Pairing Step 01, 02, and 03 results in 2.3x faster barrier regeneration compared to mono-product application.
+        </p>
+</div>
+<div class="bg-surface-container-lowest p-space-lg md:p-space-xl rounded-xl shadow-sm">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<!-- Trio Product Tiles -->
+<div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-space-md">
+<!-- Step 01 -->
+<div class="flex flex-col items-center text-center p-space-sm rounded-lg bg-surface-container-low/50">
+<div class="w-24 h-24 rounded-lg overflow-hidden mb-space-sm bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Milky botanical cleanser bottle on soft light studio surface with clean typography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwO613flSciRAoS1kV_5DF9tVZsgp1l4BmYk_mtC9bysWjdrM-NfWWLJLH_BJ2pOVyD1aGbWfpcSjK4X-Q5Y1uimLOGpQz1UT9QrfV_EFBvuMjx5IuAUZmIBahBRJel4L_p1TCT2JQ_-qx0EsSJitpx_aA7VGL3atMGhiFfh-ADUlRdoRkKnnOR5ee0R7qLXv1ly6bQM0CrMFvc-BcJCf_CFvPdJQAAC8i_TpgK_4"/>
+</div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Step 01 Cleanser</span>
+<p class="font-label-md text-label-md font-semibold text-primary mt-1">Peptide Gentle Cleanse</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">$38.00 (150ml)</p>
+<div class="mt-2 flex items-center gap-1 text-[11px] font-label-sm text-[#6B7F6E]">
+<span class="material-symbols-outlined text-[14px]">check</span> Included
+              </div>
+</div>
+<!-- Step 02 (Current) -->
+<div class="flex flex-col items-center text-center p-space-sm rounded-lg bg-secondary-fixed/30 ring-1 ring-secondary/20">
+<div class="w-24 h-24 rounded-lg overflow-hidden mb-space-sm bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Ceramide bio-peptide barrier serum amber glass bottle on warm surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmjqZmwgrTiC_l_hv4S3iffxjkPckPe6vSPXITuYXSqfUxH5jK04PAf4APksemuoF7GZpdZUVnByw5PhhHA67qQ2dLXJvAw7it3MNWLOsdied-nKdR-cca7AdPitXPShNgWdHVqB8gxXeKKlllT9Ko0aZcibE545PmP-lI0JN4CVPb5vu-Rc2ZYgRlODYkM-hSkOY9BpO6Y3NiFFZpNOx_u9u9m4QF3cTdyiZQv8g"/>
+</div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">Step 02 Treatment</span>
+<p class="font-label-md text-label-md font-semibold text-primary mt-1">Ceramide Barrier Serum</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">$68.00 (30ml)</p>
+<div class="mt-2 flex items-center gap-1 text-[11px] font-label-sm text-[#6B7F6E]">
+<span class="material-symbols-outlined text-[14px]">check</span> Current Selection
+              </div>
+</div>
+<!-- Step 03 -->
+<div class="flex flex-col items-center text-center p-space-sm rounded-lg bg-surface-container-low/50">
+<div class="w-24 h-24 rounded-lg overflow-hidden mb-space-sm bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="Heavy ceramic jar of botanical barrier recovery cream with warm wooden spatula" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJtxILktSQmEgSGqxF_iuBjnEKK2NzY9MFSr72bkB7EOLCzrLNXKyUweM3fCwSUC134lJlxVkWcMUeh4iKVo5y9mGdE1TZkxt3jSd-hVbD43ZXZ342qHaWjyUoIsz7ilAiWIU5pkwWPPqDstfUDj3o-LDRavmYEqTK_iHeOhE3VUF2wQUrR6KmvAW7q7u6x5yWagw8PNTY91xDkxw2XyOk6vpiXLKtMlmPa57dTTk"/>
+</div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Step 03 Moisturizer</span>
+<p class="font-label-md text-label-md font-semibold text-primary mt-1">Squalane Rosehip Cream</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">$78.00 (50ml)</p>
+<div class="mt-2 flex items-center gap-1 text-[11px] font-label-sm text-[#6B7F6E]">
+<span class="material-symbols-outlined text-[14px]">check</span> Included
+              </div>
+</div>
+</div>
+<!-- Checkout Bundle Box -->
+<div class="lg:col-span-4 p-space-lg rounded-xl bg-surface-container-low flex flex-col justify-between">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-bold">
+                Save $26.00 (Bundle Price)
+              </span>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-space-sm">
+                The Complete 3-Step Protocol
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Receive the complete restorative sequence in an embossed linen presentation box with ritual instructions.
+              </p>
+</div>
+<div class="mt-space-md pt-space-md">
+<div class="flex items-baseline gap-space-xs mb-space-sm">
+<span class="font-headline-md text-headline-md font-medium text-primary">$158.00</span>
+<span class="font-body-md text-body-md text-on-surface-variant line-through">$184.00</span>
+</div>
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md uppercase tracking-widest py-3 px-space-md rounded-lg shadow-sm hover:bg-secondary transition-colors" onclick="addCompleteRitual()" type="button">
+                Add Complete Ritual ($158)
+              </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Verified Clinical & Community Reviews Section -->
+<section class="max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter py-space-3xl w-full" id="reviews">
+<!-- Header with Aggregate Breakdown -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-space-2xl items-center">
+<div class="lg:col-span-5">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">Documented Patient Experiences</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mt-space-xs">
+          Clinical Feedback Monograph
+        </h2>
+<div class="flex items-center gap-space-md mt-space-sm">
+<div class="font-headline-xl text-[48px] text-primary font-medium">5.0</div>
+<div>
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Based on 428 Verified Clinical Reviews</p>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 flex flex-wrap gap-space-xs items-center justify-start lg:justify-end">
+<button class="filter-pill px-space-md py-1.5 rounded-full font-label-sm text-label-sm uppercase tracking-wider bg-primary text-on-primary transition-all" type="button">
+          All Reviews (428)
+        </button>
+<button class="filter-pill px-space-md py-1.5 rounded-full font-label-sm text-label-sm uppercase tracking-wider bg-surface-container hover:bg-surface-container-high text-on-surface transition-all" type="button">
+          Sensitive / Rosacea (184)
+        </button>
+<button class="filter-pill px-space-md py-1.5 rounded-full font-label-sm text-label-sm uppercase tracking-wider bg-surface-container hover:bg-surface-container-high text-on-surface transition-all" type="button">
+          Post-Retinol Barrier (112)
+        </button>
+<button class="filter-pill px-space-md py-1.5 rounded-full font-label-sm text-label-sm uppercase tracking-wider bg-surface-container hover:bg-surface-container-high text-on-surface transition-all" type="button">
+          Mature &amp; Dry (88)
+        </button>
+</div>
+</div>
+<!-- Review Grid Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Review 1 -->
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-label-sm text-[11px] text-[#6B7F6E] uppercase tracking-wider font-semibold">Verified Purchaser</span>
+</div>
+<h4 class="font-headline-sm text-[19px] leading-snug text-primary mb-space-xs">
+            "Rescued my skin from chemical over-exfoliation in 4 days."
+          </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            I had severely damaged my moisture barrier using prescription tretinoin with AHAs. Everything stung—even basic tap water. This serum calmed the burning within 15 minutes of application and fully cleared the flaking by Day 4.
+          </p>
+</div>
+<div class="mt-space-md pt-space-sm">
+<p class="font-label-sm text-label-sm uppercase tracking-wider font-bold text-primary">Dr. Elena Vance, PharmD</p>
+<p class="font-body-sm text-[12px] text-on-surface-variant">Skin Profile: Type IV, Sensitized</p>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-label-sm text-[11px] text-[#6B7F6E] uppercase tracking-wider font-semibold">Verified Purchaser</span>
+</div>
+<h4 class="font-headline-sm text-[19px] leading-snug text-primary mb-space-xs">
+            "The texture is unlike anything else—pure silk with zero tackiness."
+          </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Most barrier serums feel like heavy, suffocating silicone oils. ZORVELLAE's bio-lipid formula absorbs completely within 30 seconds, leaving a luminous, dewy finish that sits flawlessly beneath mineral SPF.
+          </p>
+</div>
+<div class="mt-space-md pt-space-sm">
+<p class="font-label-sm text-label-sm uppercase tracking-wider font-bold text-primary">Margot Chen</p>
+<p class="font-body-sm text-[12px] text-on-surface-variant">Skin Profile: Dry / Barrier Depleted</p>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="bg-surface-container-low p-space-lg rounded-xl flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-label-sm text-[11px] text-[#6B7F6E] uppercase tracking-wider font-semibold">Verified Purchaser</span>
+</div>
+<h4 class="font-headline-sm text-[19px] leading-snug text-primary mb-space-xs">
+            "Visible reduction in persistent cheek redness."
+          </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            I have dealt with chronic mild rosacea for ten years. The multi-ceramides paired with the Acetyl Hexapeptide have restored skin density and visibly evened out my vascular tone. On my 3rd bottle.
+          </p>
+</div>
+<div class="mt-space-md pt-space-sm">
+<p class="font-label-sm text-label-sm uppercase tracking-wider font-bold text-primary">Julian R.</p>
+<p class="font-body-sm text-[12px] text-on-surface-variant">Skin Profile: Reactive / Rosacea-Prone</p>
+</div>
+</div>
+</div>
+<!-- Write Monograph Review Trigger -->
+<div class="mt-space-xl text-center">
+<button class="inline-flex items-center gap-space-xs font-label-md text-label-md uppercase tracking-wider px-space-lg py-3 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">rate_review</span>
+        Submit Clinical Review
+      </button>
+</div>
+</section>
+<!-- Sticky Mobile Add to Cart Drawer / Desktop Floating Toast Indicator -->
+<div class="fixed bottom-6 right-6 z-40 transform translate-y-32 opacity-0 transition-all duration-300 pointer-events-none max-w-sm w-full" id="cart-notification">
+<div class="bg-primary text-on-primary p-space-md rounded-xl shadow-2xl flex items-center justify-between gap-space-md pointer-events-auto">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[#6B7F6E] text-[24px]">task_alt</span>
+<div>
+<p class="font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed">Dispensation Confirmed</p>
+<p class="font-body-sm text-body-sm text-on-primary">Added to your skincare ritual.</p>
+</div>
+</div>
+<button class="text-on-primary hover:text-secondary-fixed transition-colors font-label-sm uppercase tracking-widest text-xs" onclick="hideCartNotification()" type="button">
+        Dismiss
+      </button>
+</div>
+</div>
+</div>
+<script>
+  let currentBasePrice = 68.00;
+  let isSubscription = true;
+  let quantity = 1;
+
+  function updateGalleryImage(element, altText) {
+    const mainImg = document.getElementById('main-stage-img');
+    const thumbs = document.querySelectorAll('.gallery-thumb');
+    thumbs.forEach(t => {
+      t.classList.remove('ring-2', 'ring-primary', 'opacity-100');
+      t.classList.add('opacity-60');
+    });
+    element.classList.remove('opacity-60');
+    element.classList.add('ring-2', 'ring-primary', 'opacity-100');
+    mainImg.setAttribute('data-alt', altText);
+  }
+
+  function selectVolume(buttonElement, price, label) {
+    currentBasePrice = price;
+    const allPills = document.querySelectorAll('.volume-pill');
+    allPills.forEach(pill => {
+      pill.classList.remove('ring-2', 'ring-primary', 'bg-surface-container-lowest');
+      pill.classList.add('bg-surface-container-low');
+      const icon = pill.querySelector('.check-icon');
+      if (icon) {
+        icon.classList.remove('text-primary');
+        icon.classList.add('text-transparent');
+      }
+    });
+
+    buttonElement.classList.remove('bg-surface-container-low');
+    buttonElement.classList.add('ring-2', 'ring-primary', 'bg-surface-container-lowest');
+    const icon = buttonElement.querySelector('.check-icon');
+    if (icon) {
+      icon.classList.remove('text-transparent');
+      icon.classList.add('text-primary');
+    }
+
+    renderPricing();
+  }
+
+  function togglePurchaseMode(mode) {
+    isSubscription = (mode === 'subscription');
+    renderPricing();
+  }
+
+  function adjustQty(change) {
+    quantity = Math.max(1, quantity + change);
+    document.getElementById('product-qty').textContent = quantity;
+    renderPricing();
+  }
+
+  function renderPricing() {
+    const subUnitPrice = currentBasePrice * 0.85;
+    const activePrice = isSubscription ? subUnitPrice : currentBasePrice;
+    const totalPrice = (activePrice * quantity).toFixed(2);
+    const splitPrice = (activePrice / 4).toFixed(2);
+
+    document.getElementById('display-price').textContent = '$' + (currentBasePrice * quantity).toFixed(2);
+    document.getElementById('display-split').textContent = '$' + splitPrice;
+    document.getElementById('sub-price-tag').textContent = '$' + (subUnitPrice).toFixed(2);
+    document.getElementById('one-time-price-tag').textContent = '$' + (currentBasePrice).toFixed(2);
+
+    const ctaText = document.getElementById('cta-button-text');
+    ctaText.textContent = 'Add to Skin Ritual — $' + totalPrice;
+  }
+
+  function switchFormulationTab(index) {
+    const tabs = document.querySelectorAll('.formulation-tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    tabs.forEach((tab, i) => {
+      if (i === index) {
+        tab.classList.remove('bg-surface-container', 'text-on-surface');
+        tab.classList.add('bg-primary', 'text-on-primary');
+      } else {
+        tab.classList.remove('bg-primary', 'text-on-primary');
+        tab.classList.add('bg-surface-container', 'text-on-surface');
+      }
+    });
+
+    panels.forEach((panel, i) => {
+      if (i === index) {
+        panel.classList.remove('hidden');
+      } else {
+        panel.classList.add('hidden');
+      }
+    });
+  }
+
+  function triggerCartNotification() {
+    const toast = document.getElementById('cart-notification');
+    toast.classList.remove('translate-y-32', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+    setTimeout(() => {
+      hideCartNotification();
+    }, 4500);
+  }
+
+  function hideCartNotification() {
+    const toast = document.getElementById('cart-notification');
+    toast.classList.remove('translate-y-0', 'opacity-100');
+    toast.classList.add('translate-y-32', 'opacity-0');
+  }
+
+  function addCompleteRitual() {
+    triggerCartNotification();
+  }
+
+  function inspectMacroImage() {
+    const mainImg = document.getElementById('main-stage-img');
+    mainImg.classList.toggle('scale-125');
+  }
+
+  renderPricing();
+</script></main><footer class="w-full bg-primary-container text-on-primary border-t border-primary/10"><div class="max-w-[1360px] mx-auto px-gutter-mobile md:px-gutter pt-space-2xl pb-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-gutter"><div class="lg:col-span-4 space-y-space-md"><div class="flex items-center gap-space-sm"><span class="font-headline-md text-headline-md text-primary-fixed">ZORVELLAE</span></div><p class="font-body-sm text-body-sm text-on-primary-container max-w-sm leading-relaxed">Evidence-informed, transparent, botanical clinical formulations. Bridging dermatological rigor with sensory restorative rituals.</p><div class="pt-space-xs"><span class="inline-flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-wider px-space-sm py-space-xs rounded bg-tertiary-container text-tertiary-fixed border border-tertiary-fixed/20"><span class="material-symbols-outlined text-[14px]">eco</span>Clean Clinical Certified</span></div></div><div class="lg:col-span-2 space-y-space-sm"><h3 class="font-label-md text-label-md uppercase tracking-widest text-primary-fixed">Shop</h3><ul class="space-y-space-xs font-body-sm text-body-sm text-on-primary-container"><li><a class="hover:text-primary-fixed transition-colors" data-path="shop-all" href="#">Cleansers &amp; Essences</a></li><li><a class="hover:text-primary-fixed transition-colors" data-path="shop-all" href="#">Targeted Serums</a></li><li><a class="hover:text-primary-fixed transition-colors" data-path="shop-all" href="#">Barrier Creams</a></li><li><a class="hover:text-primary-fixed transition-colors" data-path="shop-all" href="#">Eye Treatments</a></li><li><a class="hover:text-primary-fixed transition-colors" data-path="best-sellers" href="#">Curated Ritual Bundles</a></li></ul></div><div class="lg:col-span-2 space-y-space-sm"><h3 class="font-label-md text-label-md uppercase tracking-widest text-primary-fixed">Skin Science</h3><ul class="space-y-space-xs font-body-sm text-body-sm text-on-primary-container"><li><a class="hover:text-primary-fixed transition-colors" data-path="our-science" href="#">Clinical Trial Data</a></li><li><a class="hover:text-primary-fixed transition-colors" data-path="our-science" href="#">Ingredient Transparency</a></li><li><a class="hover:text-primary-fixed transition-colors" data-path="routines" href="#">Routine Architecture</a></li><li><a class="hover:text-primary-fixed transition-colors" data-path="our-science" href="#">Sustainability &amp; Refills</a></li></ul></div><div class="lg:col-span-4 space-y-space-md"><h3 class="font-label-md text-label-md uppercase tracking-widest text-primary-fixed">Join the Zorvellae Circle</h3><p class="font-body-sm text-body-sm text-on-primary-container">Receive 15% off your first ritual, private invitations to clinical monograph releases, and botanical skincare formulation notes.</p><form class="flex items-center gap-space-xs" onsubmit="return false;"><input class="flex-1 bg-surface-container-lowest text-on-surface font-body-sm text-body-sm px-space-md py-space-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-primary-fixed" placeholder="Enter your email" type="email"/><button class="bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md uppercase tracking-wider px-space-md py-space-sm rounded-lg hover:bg-secondary-fixed-dim transition-colors" type="submit">Subscribe</button></form></div></div><div class="mt-space-xl pt-space-md border-t border-on-primary-container/20 flex flex-col md:flex-row items-center justify-between gap-space-md"><p class="font-body-sm text-body-sm text-on-primary-container">© 2025 ZORVELLAE Laboratories Inc. All formulations clinical grade. Simulation research platform.</p><div class="flex flex-wrap items-center gap-space-md font-label-sm text-label-sm uppercase tracking-wider text-on-primary-container"><a class="hover:text-primary-fixed transition-colors" data-path="accessibility" href="#">WCAG 2.2 AA Compliant</a><a class="hover:text-primary-fixed transition-colors" data-path="privacy-policy" href="#">Privacy Policy</a><a class="hover:text-primary-fixed transition-colors" data-path="terms-of-service" href="#">Terms of Service</a><span class="text-primary-fixed">United States (USD $)</span></div></div></div></footer>
+</body></html>

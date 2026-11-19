@@ -20,8 +20,8 @@ build/
 
 # Keep example files
 !.env.example
-!client/.env.example
-!server/.env.example
+!frontend/.env.example
+!backend/.env.example
 
 # Logs
 logs/
@@ -53,7 +53,7 @@ desktop.ini
 *.sw?
 
 # Uploads — local file storage (not for Git)
-server/uploads/
+backend/uploads/
 
 # Coverage
 coverage/
@@ -67,7 +67,7 @@ coverage/
 .stylelintcache
 
 # Vite
-client/.vite/
+frontend/.vite/
 
 # Stitch reference exports — large binary/HTML assets, already tracked separately
 # Uncomment below to exclude from git if repo size is an issue:

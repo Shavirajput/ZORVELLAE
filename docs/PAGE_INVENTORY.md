@@ -4,15 +4,15 @@
 
 ## Customer Shopping Milestone
 
-The customer shopping implementation covers Shop All (`/shop`), Category Collection (`/shop/category/:slug`), Product Detail (`/product/:slug`), Cart (`/cart`), Wishlist (`/wishlist`), Checkout (`/checkout`), and Order Confirmation (`/order-confirmation/:id`). Shop, collection, and product detail pages read catalog data from the MongoDB API. `client/src/data/formulations.js` remains the single development sample source for the explicit seed command. Signed-in customers' carts and wishlists persist in MongoDB; guest selections remain in browser storage and are not merged into customer accounts.
+The customer shopping implementation covers Shop All (`/shop`), Category Collection (`/shop/category/:slug`), Product Detail (`/product/:slug`), Cart (`/cart`), Wishlist (`/wishlist`), Checkout (`/checkout`), and Order Confirmation (`/order-confirmation/:id`). Shop, collection, and product detail pages read catalog data from the MongoDB API. `frontend/src/data/formulations.js` remains the single development sample source for the explicit seed command. Signed-in customers' carts and wishlists persist in MongoDB; guest selections remain in browser storage and are not merged into customer accounts.
 
 All current catalog entries, prices, product copy, and image visuals are development placeholders. They are not approved product listings and cannot be purchased. Checkout validates contact and shipping details and displays a cart-derived subtotal, but shipping rates, taxes, and delivery estimates are not configured; therefore no payable total is shown. A signed-in customer's account email and default saved address may prefill checkout, but submitting creates only a local, in-memory demo confirmation. It does not create an order, process payment, or arrange shipment. Replace the sample data and labeled image placeholders only after approved product details and owned photography are supplied.
 
-The public catalog API provides paginated product listing with category, search, price-band, and sort filters; product and category slug lookups; and published/active catalog visibility. Demo seed records are marked as such and are not purchase-available. Run `npm --prefix server run seed:catalog` only in development with `SEED_DEMO_DATA=true`; the repeatable seed upserts the sample records and does not delete data.
+The public catalog API provides paginated product listing with category, search, price-band, and sort filters; product and category slug lookups; and published/active catalog visibility. Demo seed records are marked as such and are not purchase-available. Run `npm --prefix backend run seed:catalog` only in development with `SEED_DEMO_DATA=true`; the repeatable seed upserts the sample records and does not delete data.
 
 ## Customer Account Milestone
 
-The customer account experience covers registration (`/register`), login (`/login`), dashboard (`/account`), profile (`/account/profile`), saved addresses (`/account/addresses`), order history (`/account/orders`), and order details (`/account/orders/:id`). Registration and login use the backend session API with an HTTP-only cookie; protected account APIs scope data to the authenticated customer. Profile details, cart, wishlist, and saved addresses persist in MongoDB. The default saved address is available to prefill the demo checkout. Passwords are never stored in browser storage or returned by the API. Order history remains intentionally empty; temporary checkout confirmation references are not permanent account orders.
+The customer account experience covers registration (`/register`), login (`/login`), dashboard (`/account`), profile (`/account/profile`), saved addresses (`/account/addresses`), order history (`/account/orders`), and order details (`/account/orders/:id`). Registration and login use the backend session API with an HTTP-only cookie; protected account APIs scope data to the authenticated customer. Profile details, cart, wishlist, and saved addresses persist in MongoDB. The default saved address is available to prefill the demo checkout. Passwords are never stored in browser storage or returned by the API. Customer order history and detail pages read only persisted orders owned by the signed-in customer; demo checkout confirmation references remain temporary and are not permanent account orders.
 
 ---
 
@@ -76,6 +76,10 @@ The customer account experience covers registration (`/register`), login (`/logi
 | **Toast Notifications** | Add-to-cart, wishlist, error confirmations |
 | **Image Zoom/Loupe** | PDP image magnification |
 | **Cookie/Consent Banner** | First-visit privacy banner |
+
+The Global Interaction States PDF cited above is not present in the local
+`references/approved-pdf-designs/` directory at audit time; it must be restored
+before using it for detailed interaction-state implementation.
 
 ---
 

@@ -2,9 +2,10 @@
   "name": "zorevellae",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n api,client -c magenta,cyan \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
-    "build": "npm --prefix client run build",
-    "lint": "npm --prefix client run lint"
+    "dev": "concurrently -n api,frontend -c magenta,cyan \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "start": "npm --prefix backend run start",
+    "build": "npm --prefix frontend run build",
+    "lint": "npm --prefix frontend run lint"
   },
   "devDependencies": {
     "concurrently": "^9.2.1"
