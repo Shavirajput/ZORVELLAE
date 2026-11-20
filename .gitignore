@@ -76,3 +76,7 @@ frontend/.vite/
 # Reference PDFs — large binary files
 # Uncomment if needed:
 # references/approved-pdf-designs/*.pdf
+
+# Local archives exceed GitHub's file size limit
+/README.zip
+/references/zorevellae.zip
