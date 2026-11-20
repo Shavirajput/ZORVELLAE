@@ -7,7 +7,8 @@ TLS handshake failure. Database-dependent endpoints are implemented but not
 verified against live data.
 
 Existing customer and catalog endpoints are listed in [API_PLAN.md](./API_PLAN.md).
-This document records the admin foundation and catalog-management APIs.
+This document records the admin foundation, catalog, inventory, store-settings,
+and content-management APIs.
 
 ## Admin authentication
 
@@ -38,11 +39,70 @@ lose access on the next request.
 | GET | `/api/admin/categories/:categoryId` | Admin | Retrieve a category for editing |
 | PUT | `/api/admin/categories/:categoryId` | Admin | Replace editable category fields |
 | DELETE | `/api/admin/categories/:categoryId` | Admin | Delete a category only when no products reference it |
+| GET | `/api/admin/inventory` | Admin | Search and filter variant-level inventory with pagination |
+| GET | `/api/admin/inventory/:productId/:variantId/adjustments` | Admin | Retrieve paginated stock adjustment history |
+| POST | `/api/admin/inventory/:productId/:variantId/adjustments` | Admin | Record a verified count or signed stock adjustment |
+| GET | `/api/admin/settings` | Admin | Retrieve the single store configuration |
+| PUT | `/api/admin/settings` | Admin | Validate and update the store configuration |
+| GET | `/api/admin/content-pages/:pageKey` | Admin | Retrieve the About Us or Our Science content draft |
+| PUT | `/api/admin/content-pages/:pageKey` | Admin | Save approved plain-text page copy and draft/published status |
+| GET | `/api/admin/ingredients` | Admin | Search/filter ingredient records with pagination |
+| POST | `/api/admin/ingredients` | Admin | Create a draft or published ingredient record |
+| GET | `/api/admin/ingredients/:ingredientId` | Admin | Retrieve an ingredient record for editing |
+| PUT | `/api/admin/ingredients/:ingredientId` | Admin | Replace editable ingredient fields |
+| DELETE | `/api/admin/ingredients/:ingredientId` | Admin | Delete an ingredient record |
+| GET | `/api/admin/contact-messages` | Admin | Search/filter contact messages with pagination |
+| GET | `/api/admin/contact-messages/:messageId` | Admin | Retrieve a contact message and its status timestamps |
+| PATCH | `/api/admin/contact-messages/:messageId/status` | Admin | Mark a message read or resolved |
 
-All catalog-management routes follow the admin dashboard routes under the
-existing `protectAdmin` and `adminOnly` middleware. They revalidate the session
-and persisted administrator role for every request. Customer or anonymous
-sessions are rejected.
+All protected admin routes use the existing `protectAdmin` and `adminOnly`
+middleware. They revalidate the session and persisted administrator role for
+every request. Customer or anonymous sessions are rejected.
+
+### About Us and Our Science content
+
+The only supported `pageKey` values are `about-us` and `our-science`.
+`GET` returns an empty draft when no record exists and does not create one.
+`PUT` accepts a complete plain-text document:
+
+```json
+{
+  "title": "",
+  "introduction": "",
+  "sections": [{ "heading": "", "body": "" }],
+  "status": "draft"
+}
+```
+
+Only the declared fields are accepted; section count and text lengths are
+bounded. A published document needs a title and content. Copy is entered by an
+authorized administrator; no scientific or clinical claims or page text are
+seeded. These endpoints are admin-only and do not provide public page reads.
+
+### Ingredient Library records
+
+`GET /api/admin/ingredients` accepts `page` (default `1`), `limit` (default
+`20`, maximum `100`), `search` (name, INCI, or slug; max 100 characters), and
+`status` (`all`, `draft`, or `published`). Records are sorted by `sortOrder`
+then name. Create/update accept only `name`, `inci`, `slug`, `summary`,
+`monograph`, `sortOrder`, and `status`. Slugs are normalized lowercase and
+unique. A published record requires a summary or monograph. No sample
+ingredients, benefits, clinical evidence, or other claims are created. Public
+ingredient reads are not part of this admin milestone.
+
+### Contact message inbox
+
+`GET /api/admin/contact-messages` supports bounded pagination, search by name,
+email, or subject, and `status` (`all`, `unread`, `read`, or `resolved`).
+List responses omit message bodies; the detail endpoint returns the message
+body and sender fields. The only status update body is `{"status":"read"}` or
+`{"status":"resolved"}`. Sender fields and message text are immutable through
+these APIs.
+
+There is no public contact submission endpoint or storefront form integration
+in this milestone. The inbox contains no seeded messages and remains empty
+until an approved message-intake workflow stores records. The API does not
+send email or reply to customers.
 
 ### Product management
 
@@ -82,7 +142,9 @@ Variant prices are non-negative amounts with at most two decimals; the product
 are retained when supplied and generated for new variants. SKU values are
 normalized and must be unique across product variants. Only supported editable
 fields are accepted; callers cannot set the product record ID, demo flag, or
-purchase availability. New products default to unavailable for purchase.
+purchase availability or stock quantity. New products default to unavailable
+for purchase. Existing variant stock quantities are preserved when catalog
+edits retain the corresponding variant ID.
 
 Statuses map to the existing model flags: `published` means active and
 published; `draft` means active and unpublished; `inactive` means inactive
@@ -98,6 +160,90 @@ Create/update accept `name`, `slug`, `description`, `bannerImage`,
 deleted (`409 Conflict`). Duplicate product or category slugs return `409`;
 invalid payloads or category IDs return `400`; missing records return `404`;
 database outages return a safe `503` error envelope.
+
+### Inventory management
+
+Inventory is tracked on each existing product variant. The optional
+`stockQuantity` is an integer; an absent value is reported as `null`/untracked
+and is never assumed to be zero. The low-stock threshold is 5: zero is
+out-of-stock, 1–5 is low stock, and values above 5 are in stock.
+
+`GET /api/admin/inventory` accepts `page` (default `1`), `limit` (default `20`,
+maximum `100`), `search` (product name or SKU, max 100 characters), and
+`status` (`all`, `in_stock`, `low_stock`, `out_of_stock`, or `untracked`).
+Results are paginated by variant.
+
+Adjustment history is read at
+`GET /api/admin/inventory/:productId/:variantId/adjustments` with optional
+`page` and `limit`. `POST` to the same path accepts only:
+
+```json
+{
+  "action": "set",
+  "quantity": 12,
+  "reason": "Physical count confirmed."
+}
+```
+
+Actions are `set`, `increment`, and `decrement`; quantities must be whole,
+non-negative for `set`, and positive for increments/decrements. Every change
+requires a reason. Increment/decrement is rejected until an actual count has
+been set, and adjustments cannot produce a negative quantity. The previous
+quantity (or `null` when previously untracked), new quantity, requested
+adjustment amount, reason, admin reference, and timestamp are written with the
+product update in a MongoDB transaction. Inventory changes do not alter order
+creation or deduct stock during checkout.
+
+### Store settings
+
+`GET /api/admin/settings` returns the one settings record or an in-memory safe
+default configuration when none has been saved. Reading settings does not
+create a record. `PUT /api/admin/settings` accepts the complete settings
+object:
+
+```json
+{
+  "storeName": "",
+  "storeLogoUrl": "",
+  "supportEmail": "",
+  "supportPhone": "",
+  "storeAddress": {
+    "addressLine1": "",
+    "addressLine2": "",
+    "city": "",
+    "region": "",
+    "postalCode": "",
+    "country": ""
+  },
+  "currencyCode": "",
+  "taxConfiguration": {
+    "enabled": false,
+    "ratePercent": null,
+    "isInclusive": false
+  },
+  "shippingConfiguration": {
+    "enabled": false,
+    "flatRate": null
+  },
+  "checkoutConfiguration": {
+    "enabled": null,
+    "allowGuestCheckout": null
+  }
+}
+```
+
+The store document uses the fixed `_id` `primary`, preventing duplicate
+settings records through these APIs. Blank identity/contact fields and
+`null` monetary values mean unconfigured; tax and shipping are disabled until
+explicitly configured. Rates are never inferred. Logo URLs must be HTTPS,
+support email/phone, currency, nested objects, booleans, and non-negative
+amounts are validated, and unsupported fields (including secret or credential
+fields) are rejected. Responses use an explicit safe projection and contain no
+payment credentials or other secrets.
+
+Tax, shipping, and checkout settings are storage-only in this milestone. They
+are not used to calculate checkout totals, submit payments, calculate shipping,
+or change storefront behavior.
 
 ### Image storage boundary
 
@@ -160,6 +306,7 @@ verified while Atlas is disconnected.
 
 ## Remaining admin work
 
-Customer management, order mutation, inventory management, settings, and
-verified payment integration are not implemented. Do not treat disabled
+Customer, order, inventory, store-settings, and content-management endpoints
+require MongoDB Atlas to verify database-backed behavior. Public contact intake
+and payment integration are not implemented. Do not treat other disabled
 navigation entries as working APIs.

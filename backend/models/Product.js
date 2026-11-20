@@ -39,6 +39,14 @@ const variantSchema = new mongoose.Schema(
       uppercase: true,
       default: '',
     },
+    stockQuantity: {
+      type: Number,
+      min: 0,
+      validate: {
+        validator: (quantity) => quantity === undefined || Number.isSafeInteger(quantity),
+        message: 'Stock quantity must be a non-negative whole number.',
+      },
+    },
   },
   { _id: false },
 );

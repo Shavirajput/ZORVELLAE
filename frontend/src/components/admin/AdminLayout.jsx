@@ -1,11 +1,19 @@
 import { useState } from 'react'
 import {
+  ClipboardList,
   LayoutDashboard,
   LogOut,
   Menu,
+  Archive,
+  Atom,
+  FileText,
+  FlaskConical,
+  Mail,
   Package,
+  Settings,
   ShieldCheck,
   Tags,
+  Users,
   X,
 } from 'lucide-react'
 import { Link, Navigate, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom'
@@ -15,7 +23,18 @@ const catalogSections = [
   { label: 'Products', to: '/admin/products', Icon: Package },
   { label: 'Categories', to: '/admin/categories', Icon: Tags },
 ]
-const plannedSections = ['Orders', 'Customers', 'Inventory', 'Settings']
+const managementSections = [
+  { label: 'Orders', to: '/admin/orders', Icon: ClipboardList },
+  { label: 'Customers', to: '/admin/customers', Icon: Users },
+  { label: 'Inventory', to: '/admin/inventory', Icon: Archive },
+  { label: 'Store Settings', to: '/admin/settings', Icon: Settings },
+]
+const contentSections = [
+  { label: 'About Us', to: '/admin/content/about-us', Icon: FileText },
+  { label: 'Our Science', to: '/admin/content/our-science', Icon: Atom },
+  { label: 'Ingredient Library', to: '/admin/ingredients', Icon: FlaskConical },
+  { label: 'Contact Messages', to: '/admin/contact-messages', Icon: Mail },
+]
 
 function AdminSidebar({ admin, onNavigate, onLogout, loggingOut, logoutError }) {
   return (
@@ -25,7 +44,7 @@ function AdminSidebar({ admin, onNavigate, onLogout, loggingOut, logoutError }) 
         <span className="mt-xs block font-label-sm text-[8px] uppercase tracking-wider text-white/60">Admin console</span>
       </Link>
 
-      <nav className="flex-1 px-md py-lg" aria-label="Admin navigation">
+      <nav className="flex-1 overflow-y-auto px-md py-lg" aria-label="Admin navigation">
         <NavLink
           to="/admin/dashboard"
           onClick={onNavigate}
@@ -53,11 +72,31 @@ function AdminSidebar({ admin, onNavigate, onLogout, loggingOut, logoutError }) 
           Management
         </p>
         <ul className="space-y-xs">
-          {plannedSections.map((section) => (
-            <li key={section}>
-              <span aria-disabled="true" title={`${section} management is not part of this milestone`} className="flex min-h-10 items-center justify-between rounded-md px-md font-body-sm text-white/35">
-                {section}<span className="font-label-sm text-[7px] uppercase tracking-wider">Later</span>
-              </span>
+          {managementSections.map(({ label, to, Icon }) => (
+            <li key={label}>
+              <NavLink
+                to={to}
+                onClick={onNavigate}
+                className={({ isActive }) => `flex min-h-11 items-center gap-sm rounded-md px-md font-body-sm ${isActive ? 'bg-white/10 text-white' : 'text-white/70 hover:bg-white/5 hover:text-white'}`}
+              >
+                <Icon size={17} /> {label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+        <p className="mb-sm mt-xl px-md font-label-sm text-[8px] uppercase tracking-[0.16em] text-white/40">
+          Content
+        </p>
+        <ul className="space-y-xs">
+          {contentSections.map(({ label, to, Icon }) => (
+            <li key={label}>
+              <NavLink
+                to={to}
+                onClick={onNavigate}
+                className={({ isActive }) => `flex min-h-11 items-center gap-sm rounded-md px-md font-body-sm ${isActive ? 'bg-white/10 text-white' : 'text-white/70 hover:bg-white/5 hover:text-white'}`}
+              >
+                <Icon size={17} /> {label}
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -126,7 +165,23 @@ export default function AdminLayout() {
     ? 'Products'
     : location.pathname.startsWith('/admin/categories')
       ? 'Categories'
-      : 'Overview'
+      : location.pathname.startsWith('/admin/orders')
+        ? 'Orders'
+        : location.pathname.startsWith('/admin/customers')
+          ? 'Customers'
+          : location.pathname.startsWith('/admin/inventory')
+            ? 'Inventory'
+            : location.pathname.startsWith('/admin/settings')
+              ? 'Store Settings'
+              : location.pathname.startsWith('/admin/content/about-us')
+                ? 'About Us'
+                : location.pathname.startsWith('/admin/content/our-science')
+                  ? 'Our Science'
+                  : location.pathname.startsWith('/admin/ingredients')
+                    ? 'Ingredient Library'
+                    : location.pathname.startsWith('/admin/contact-messages')
+                      ? 'Contact Messages'
+                      : 'Overview'
 
   return (
     <div className="min-h-screen bg-surface-container-low lg:grid lg:grid-cols-[260px_minmax(0,1fr)]">

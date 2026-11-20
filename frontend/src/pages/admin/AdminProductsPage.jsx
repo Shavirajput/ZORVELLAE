@@ -42,6 +42,7 @@ export default function AdminProductsPage() {
   const [result, setResult] = useState({ key: '', products: [], pagination: null, error: null })
   const [categories, setCategories] = useState([])
   const [categoriesError, setCategoriesError] = useState('')
+  const [categoriesAttempt, setCategoriesAttempt] = useState(0)
   const [deletingId, setDeletingId] = useState('')
   const [notice, setNotice] = useState('')
   const [actionError, setActionError] = useState('')
@@ -57,23 +58,30 @@ export default function AdminProductsPage() {
   useEffect(() => {
     const controller = new AbortController()
     let active = true
-    listAllAdminCategories(controller.signal)
-      .then((categoryList) => {
-        if (active) {
-          setCategories(categoryList)
-          setCategoriesError('')
-        }
-      })
-      .catch((error) => {
-        if (active && error?.code !== 'ERR_CANCELED') {
-          setCategoriesError(error.message || 'Unable to load categories.')
-        }
-      })
+    const requestTimer = setTimeout(() => {
+      listAllAdminCategories(controller.signal)
+        .then((categoryList) => {
+          if (active) {
+            if (!Array.isArray(categoryList)) {
+              throw new Error('The catalog service returned an invalid categories response.')
+            }
+            setCategories(categoryList)
+            setCategoriesError('')
+          }
+        })
+        .catch((error) => {
+          if (!active) return
+          setCategoriesError(error?.code === 'ERR_CANCELED'
+            ? 'The categories request was cancelled. Please retry.'
+            : error.message || 'Unable to load categories.')
+        })
+    }, 0)
     return () => {
       active = false
+      clearTimeout(requestTimer)
       controller.abort()
     }
-  }, [])
+  }, [categoriesAttempt])
 
   useEffect(() => {
     const controller = new AbortController()
@@ -86,23 +94,32 @@ export default function AdminProductsPage() {
     if (debouncedSearch) params.search = debouncedSearch
     if (filters.categoryId) params.categoryId = filters.categoryId
 
-    listAdminProducts(params, controller.signal)
-      .then((productsResult) => {
-        if (!active) return
-        setResult({
-          key,
-          products: productsResult.data,
-          pagination: productsResult.pagination,
-          error: null,
+    const requestTimer = setTimeout(() => {
+      listAdminProducts(params, controller.signal)
+        .then((productsResult) => {
+          if (!active) return
+          if (!Array.isArray(productsResult.data)) {
+            throw new Error('The catalog service returned an invalid products response.')
+          }
+          setResult({
+            key,
+            products: productsResult.data,
+            pagination: productsResult.pagination,
+            error: null,
+          })
         })
-      })
-      .catch((error) => {
-        if (!active || error?.code === 'ERR_CANCELED') return
-        setResult({ key, products: [], pagination: null, error })
-      })
+        .catch((error) => {
+          if (!active) return
+          const requestError = error?.code === 'ERR_CANCELED'
+            ? new Error('The products request was cancelled. Please retry.')
+            : error
+          setResult({ key, products: [], pagination: null, error: requestError })
+        })
+    }, 0)
 
     return () => {
       active = false
+      clearTimeout(requestTimer)
       controller.abort()
     }
   }, [debouncedSearch, filters.categoryId, filters.page, filters.status, key])
@@ -186,7 +203,12 @@ export default function AdminProductsPage() {
             </select>
           </label>
         </div>
-        {categoriesError && <p role="alert" className="mt-sm font-body-sm text-error">{categoriesError}</p>}
+        {categoriesError && (
+          <div className="mt-sm flex flex-wrap items-center gap-md">
+            <p role="alert" className="font-body-sm text-error">{categoriesError}</p>
+            <button type="button" onClick={() => setCategoriesAttempt((value) => value + 1)} className="font-label-sm text-[9px] uppercase text-secondary underline">Retry categories</button>
+          </div>
+        )}
       </div>
 
       {notice && <p role="status" className="mt-md rounded-md border border-secondary/20 bg-secondary-container/20 p-md font-body-sm text-on-surface">{notice}</p>}

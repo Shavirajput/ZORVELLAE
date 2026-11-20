@@ -18,7 +18,7 @@ const columns = [
 export default function Footer() {
   return (
     <footer className="bg-primary-container text-inverse-on-surface">
-      <div className="mx-auto grid max-w-canvas gap-xl px-gutter-mobile py-xl md:grid-cols-[1.5fr_repeat(3,1fr)] md:px-gutter">
+      <div className="mx-auto grid max-w-canvas gap-xl px-gutter-mobile py-2xl sm:grid-cols-2 md:grid-cols-[1.5fr_repeat(3,1fr)] md:px-gutter">
         <div>
           <p className="font-headline text-[24px] tracking-[0.14em] text-white">ZORVELLAE</p>
           <p className="mt-sm max-w-sm font-body-sm text-[13px] leading-relaxed text-inverse-on-surface/70">
@@ -31,7 +31,7 @@ export default function Footer() {
             <ul className="mt-md space-y-sm">
               {column.links.map(([label, href]) => (
                 <li key={href}>
-                  <Link to={href} className="font-body-sm text-inverse-on-surface/80 hover:text-white">
+                  <Link to={href} className="font-body-sm text-inverse-on-surface/80 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                     {label}
                   </Link>
                 </li>
@@ -41,7 +41,7 @@ export default function Footer() {
         ))}
       </div>
       <div className="border-t border-white/10 px-gutter-mobile py-md md:px-gutter">
-        <p className="mx-auto max-w-canvas font-label-sm text-[9px] uppercase text-inverse-on-surface/50">
+        <p className="mx-auto max-w-canvas font-label-sm text-[9px] uppercase tracking-[0.12em] text-inverse-on-surface/50">
           © ZORVELLAE
         </p>
       </div>

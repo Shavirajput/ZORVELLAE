@@ -4,9 +4,10 @@
 **ODM:** Mongoose 9<br>
 **Naming Convention:** camelCase fields, PascalCase model names
 
-The implemented customer-data models are `User`, `Cart`, `Wishlist`, `Address`,
-and `Order`. Payments, reviews, and ingredients below remain future schema
-planning only.
+Implemented models include customer and catalog data (`User`, `Cart`, `Wishlist`,
+`Address`, `Order`, `Category`, `Product`), admin store settings, and content
+management (`ContentPage`, `Ingredient`, `ContactMessage`). Payment processing
+and reviews remain future schema planning only. Content records are not seeded.
 
 ---
 
@@ -21,14 +22,14 @@ User ──────────────── Review (1:N)
 
 Product ────────────── Category (N:1)
 Product ────────────── Review (1:N)
-Product ────────────── Ingredient (N:M via ingredientRefs)
 
 Order ──────────────── OrderItem (embedded)
 Order ──────────────── Address (embedded snapshot)
 Order ──────────────── Payment (1:1 embedded)
 
-ContactMessage ─────── (standalone)
-Ingredient ─────────── (standalone, referenced by Product)
+ContentPage ────────── (standalone, unique key per managed page)
+Ingredient ─────────── (standalone admin-managed reference record)
+ContactMessage ─────── (standalone admin-managed message)
 ```
 
 ---
@@ -74,6 +75,7 @@ const variantSchema = new mongoose.Schema({
   label: { type: String, required: true },
   price: { type: Number, required: true, min: 0 },
   sku: { type: String, trim: true, uppercase: true, default: '' },
+  stockQuantity: { type: Number, min: 0 }, // Optional; absent means untracked
 }, { _id: false });
 
 const productSchema = new mongoose.Schema({
@@ -114,57 +116,56 @@ const productSchema = new mongoose.Schema({
 ```
 
 The model computes the base `price` from the lowest variant price during
-validation and prevents demo products from being purchase-available. There
-are no inventory fields. Admin input validation normalizes SKU values,
-requires SKUs to be unique within a product payload, and a partial unique
-MongoDB index prevents non-empty SKU reuse across product records.
+validation and prevents demo products from being purchase-available.
+`stockQuantity` is optional and validated as a non-negative whole number;
+missing quantities remain untracked rather than defaulting to zero. Admin
+catalog edits preserve quantities for retained variant IDs and cannot directly
+set stock. Admin input validation normalizes SKU values, requires SKUs to be
+unique within a product payload, and a partial unique MongoDB index prevents
+non-empty SKU reuse across product records.
+
+The admin inventory API uses an `InventoryAdjustment` audit collection with
+product/variant snapshots, action, previous/new quantity, adjustment amount,
+required reason, admin reference, and timestamp. Stock and the matching audit
+record are updated together in a MongoDB transaction. No checkout or order
+creation path deducts inventory.
 
 **Indexes:** unique product `id` and `slug`; `{ isActive, isPublished,
 sortOrder }`; and `{ category, isActive, isPublished }`.
 
 ---
 
-## 4. Ingredient Model
+## Store Settings Model
 
-```js
-// models/Ingredient.js
-const ingredientSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  inci: {
-    type: String,            // International Nomenclature Cosmetic Ingredient
-    trim: true,
-  },
-  slug: {
-    type: String,
-    required: true,
-    unique: true,
-    lowercase: true,
-  },
+`StoreSettings` is a singleton configuration document with the fixed string
+`_id: "primary"`. The model stores store identity/logo URL, support contacts,
+address, currency code, and nested tax, shipping, and checkout configuration.
+No payment credentials or secret fields are part of the schema. Empty store
+details and currency, disabled tax/shipping with `null` rates, and unconfigured
+checkout preferences are safe initial values; no store data or rates are
+invented. The admin GET endpoint returns defaults without persisting a
+document, and updates always target the fixed ID.
 
-  type: {
-    type: String,
-    enum: ['lipid', 'peptide', 'botanical', 'vitamin', 'acid', 'ceramide', 'other'],
-  },
+Tax, shipping, and checkout fields are configuration only. They are not wired
+to checkout behavior or calculations in this milestone.
 
-  // Monograph content
-  origin: String,            // "Cold-fermented Rosa Canina seeds"
-  mechanism: String,         // How it works at cellular level
-  clinicalEvidence: String,  // Clinical trial summary
-  purityProfile: String,     // "99.8% Chromatographic"
-  bioavailability: String,   // "98.4% Micellar Sub-micron"
+---
 
-  // Display
-  icon: String,              // Icon name
-  image: String,             // Hero image URL
-  tags: [String],            // ["Barrier", "Anti-aging", "Brightening"]
+## ContentPage Model (implemented)
 
-  isActive: { type: Boolean, default: true },
-}, { timestamps: true });
-```
+`ContentPage` stores one editable record per supported key: `about-us` or
+`our-science`. Each document contains a title, introduction, ordered plain-text
+sections, and `draft`/`published` status. The admin API returns an empty draft
+without persisting one when a key has not yet been saved. There is no seeded
+content or public read API in this milestone.
+
+## Ingredient Model (implemented)
+
+`Ingredient` stores `name`, optional `inci`, unique normalized `slug`, optional
+approved `summary` and `monograph`, `sortOrder`, and `draft`/`published`
+status. A published record requires a summary or monograph. No sample records,
+scientific claims, evidence ratings, or ingredient/product relationships are
+created. CRUD and search are protected by admin authorization.
 
 ---
 
@@ -247,18 +248,11 @@ const reviewSchema = new mongoose.Schema({
 
 ## 10. ContactMessage Model
 
-```js
-// models/ContactMessage.js
-const contactMessageSchema = new mongoose.Schema({
-  name:    { type: String, required: true, trim: true },
-  email:   { type: String, required: true, lowercase: true },
-  subject: { type: String, required: true, maxlength: 200 },
-  message: { type: String, required: true, maxlength: 2000 },
-  isRead:  { type: Boolean, default: false },
-  readAt:  Date,
-  repliedAt: Date,
-}, { timestamps: true });
-```
+`ContactMessage` stores immutable sender fields (`name`, normalized `email`,
+`subject`, and `message`) with admin-managed `unread`, `read`, or `resolved`
+status plus `readAt` and `resolvedAt` timestamps. Admin APIs provide paginated
+listing, detail, and read/resolved updates. There is no public submission
+endpoint or seeded message data; an approved intake workflow is still needed.
 
 ---
 
@@ -270,14 +264,15 @@ User:            email (unique), defaultShippingAddress
 Category:        slug (unique), isActive
 Product:         id (unique), slug (unique), { isActive, isPublished,
                  sortOrder }, { category, isActive, isPublished }
-Ingredient:      slug (unique), type, isActive
+ContentPage:     key (unique), status
+Ingredient:      slug (unique), { status, sortOrder, name }, inci
 Cart:            customer (unique)
 Wishlist:        customer (unique)
 Address:         customer, createdAt
 Order:           orderNumber (unique), user, status, createdAt,
                  "payment.razorpayPaymentId"
 Review:          { product, user } (unique compound), product, isVisible
-ContactMessage:  isRead, createdAt
+ContactMessage:  { status, createdAt }, { email, createdAt }
 ```
 
 ---

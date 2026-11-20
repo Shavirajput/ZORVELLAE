@@ -6,9 +6,10 @@ import useShop from '../../context/useShop'
 const links = [
   ['Shop', '/shop'],
   ['Skin Concerns', '/skin-concerns'],
-  ['Routines', '/routines'],
-  ['Ingredients', '/ingredients'],
+  ['Skincare Routines', '/routines'],
   ['Our Science', '/our-science'],
+  ['Ingredients', '/ingredients'],
+  ['About Us', '/about'],
 ]
 
 export default function Navbar() {
@@ -20,7 +21,7 @@ export default function Navbar() {
       <div className="mx-auto flex h-20 max-w-canvas items-center justify-between px-gutter-mobile md:px-gutter">
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center xl:hidden"
           aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
@@ -28,7 +29,7 @@ export default function Navbar() {
           {menuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
 
-        <Link to="/" className="min-w-0 text-center lg:text-left" aria-label="ZORVELLAE home">
+        <Link to="/" className="min-w-0 text-center xl:text-left" aria-label="ZORVELLAE home">
           <span className="block font-headline text-[24px] leading-none tracking-[0.14em] text-primary">
             ZORVELLAE
           </span>
@@ -37,12 +38,12 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-lg lg:flex" aria-label="Primary navigation">
+        <nav className="hidden items-center gap-lg xl:flex" aria-label="Primary navigation">
           {links.map(([label, href]) => (
             <Link
               key={href}
               to={href}
-              className="font-label-md text-[12px] uppercase text-on-surface-variant transition-colors hover:text-primary"
+              className="relative font-label-md text-[12px] uppercase text-on-surface-variant transition-colors duration-250 hover:text-primary after:absolute after:-bottom-2 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-250 hover:after:w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-secondary"
             >
               {label}
             </Link>
@@ -72,14 +73,14 @@ export default function Navbar() {
       </div>
 
       {menuOpen && (
-        <nav className="border-t border-primary/10 bg-surface px-gutter-mobile py-lg lg:hidden" aria-label="Mobile navigation">
+        <nav className="border-t border-primary/10 bg-surface px-gutter-mobile py-lg xl:hidden" aria-label="Mobile navigation">
           <div className="flex flex-col gap-md">
             {links.map(([label, href]) => (
               <Link
                 key={href}
                 to={href}
                 onClick={() => setMenuOpen(false)}
-                className="border-b border-outline-variant/40 py-sm font-headline text-headline-sm"
+                className="border-b border-outline-variant/40 py-sm font-headline text-headline-sm transition-colors hover:text-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary"
               >
                 {label}
               </Link>

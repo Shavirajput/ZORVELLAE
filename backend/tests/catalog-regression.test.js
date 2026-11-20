@@ -56,8 +56,15 @@ test('public product response keeps private admin SKU metadata out of the catalo
     images: [],
     price: 40,
     currency: 'USD',
-    variants: [{ id: '30ml', label: '30 ml', price: 40, sku: 'PRIVATE-30' }],
+    variants: [{
+      id: '30ml',
+      label: '30 ml',
+      price: 40,
+      sku: 'PRIVATE-30',
+      stockQuantity: 17,
+    }],
   });
   assert.deepEqual(product.variants, [{ id: '30ml', label: '30 ml', price: 40 }]);
   assert.equal(Object.hasOwn(product, 'compareAtPrice'), false);
+  assert.equal(Object.hasOwn(product.variants[0], 'stockQuantity'), false);
 });

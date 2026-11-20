@@ -206,7 +206,7 @@ function withVariantIds(variants) {
   }));
 }
 
-function productValues(data, category) {
+function productValues(data, category, existingProduct = null) {
   const values = {
     name: data.name,
     slug: data.slug,
@@ -214,7 +214,14 @@ function productValues(data, category) {
     category: category._id,
     categoryLabel: category.name,
     currency: data.currency,
-    variants: withVariantIds(data.variants),
+    variants: withVariantIds(data.variants).map((variant) => {
+      const existingVariant = existingProduct?.variants.find(
+        (entry) => entry.id === variant.id,
+      );
+      return existingVariant?.stockQuantity === undefined
+        ? variant
+        : { ...variant, stockQuantity: existingVariant.stockQuantity };
+    }),
     images: data.images,
     isActive: data.isActive,
     isPublished: data.isPublished,
@@ -382,7 +389,7 @@ const updateAdminProduct = asyncHandler(async (req, res) => {
       ]);
     }
 
-    product.set(productValues(data, category));
+    product.set(productValues(data, category, product));
     if (data.compareAtPrice === null) product.set('compareAtPrice', undefined);
     await product.save();
     const updated = await Product.findById(product._id)

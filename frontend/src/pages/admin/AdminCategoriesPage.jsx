@@ -32,31 +32,40 @@ export default function AdminCategoriesPage() {
   useEffect(() => {
     const controller = new AbortController()
     let active = true
+    const requestKey = `${filters.search}|${filters.status}|${filters.page}|${attempt}`
     const params = { page: filters.page, limit: 20, status: filters.status }
     if (filters.search.trim()) params.search = filters.search.trim()
 
-    listAdminCategories(params, controller.signal)
-      .then((response) => {
-        if (active) {
-          setResult({
-            key,
-            categories: response.data,
-            pagination: response.pagination,
-            error: null,
-          })
-        }
-      })
-      .catch((error) => {
-        if (active && error?.code !== 'ERR_CANCELED') {
-          setResult({ key, categories: [], pagination: null, error })
-        }
-      })
+    const requestTimer = setTimeout(() => {
+      listAdminCategories(params, controller.signal)
+        .then((response) => {
+          if (active) {
+            if (!Array.isArray(response.data)) {
+              throw new Error('The catalog service returned an invalid categories response.')
+            }
+            setResult({
+              key: requestKey,
+              categories: response.data,
+              pagination: response.pagination,
+              error: null,
+            })
+          }
+        })
+        .catch((error) => {
+          if (!active) return
+          const requestError = error?.code === 'ERR_CANCELED'
+            ? new Error('The categories request was cancelled. Please retry.')
+            : error
+          setResult({ key: requestKey, categories: [], pagination: null, error: requestError })
+        })
+    }, 0)
 
     return () => {
       active = false
+      clearTimeout(requestTimer)
       controller.abort()
     }
-  }, [filters, key])
+  }, [filters.search, filters.status, filters.page, attempt])
 
   const handleDelete = async (category) => {
     if (!window.confirm(`Delete “${category.name}”? Categories with products cannot be deleted.`)) return

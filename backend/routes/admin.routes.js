@@ -21,6 +21,40 @@ const {
   updateAdminCategory,
   updateAdminProduct,
 } = require('../controllers/adminCatalog.controller');
+const {
+  getAdminOrder,
+  listAdminOrders,
+  updateAdminOrderStatus,
+} = require('../controllers/adminOrders.controller');
+const {
+  getAdminCustomer,
+  listAdminCustomers,
+} = require('../controllers/adminCustomers.controller');
+const {
+  createAdminInventoryAdjustment,
+  getAdminInventoryHistory,
+  listAdminInventory,
+} = require('../controllers/adminInventory.controller');
+const {
+  getAdminStoreSettings,
+  updateAdminStoreSettings,
+} = require('../controllers/adminStoreSettings.controller');
+const {
+  getAdminContentPage,
+  updateAdminContentPage,
+} = require('../controllers/adminContentPages.controller');
+const {
+  createAdminIngredient,
+  deleteAdminIngredient,
+  getAdminIngredient,
+  listAdminIngredients,
+  updateAdminIngredient,
+} = require('../controllers/adminIngredients.controller');
+const {
+  getAdminContactMessage,
+  listAdminContactMessages,
+  updateAdminContactMessageStatus,
+} = require('../controllers/adminContactMessages.controller');
 const { adminOnly, protectAdmin } = require('../middleware/auth');
 const verifyAuthOrigin = require('../middleware/verifyAuthOrigin');
 const { sendError } = require('../utils/apiResponse');
@@ -91,5 +125,41 @@ router.post('/categories', createAdminCategory);
 router.get('/categories/:categoryId', getAdminCategory);
 router.put('/categories/:categoryId', updateAdminCategory);
 router.delete('/categories/:categoryId', deleteAdminCategory);
+
+router.get('/orders', listAdminOrders);
+router.get('/orders/:orderId', getAdminOrder);
+router.patch('/orders/:orderId/status', updateAdminOrderStatus);
+
+router.get('/customers', listAdminCustomers);
+router.get('/customers/:customerId', getAdminCustomer);
+
+router.get('/inventory', listAdminInventory);
+router.get(
+  '/inventory/:productId/:variantId/adjustments',
+  getAdminInventoryHistory,
+);
+router.post(
+  '/inventory/:productId/:variantId/adjustments',
+  createAdminInventoryAdjustment,
+);
+
+router.get('/settings', getAdminStoreSettings);
+router.put('/settings', updateAdminStoreSettings);
+
+router.get('/content-pages/:pageKey', getAdminContentPage);
+router.put('/content-pages/:pageKey', updateAdminContentPage);
+
+router.get('/ingredients', listAdminIngredients);
+router.post('/ingredients', createAdminIngredient);
+router.get('/ingredients/:ingredientId', getAdminIngredient);
+router.put('/ingredients/:ingredientId', updateAdminIngredient);
+router.delete('/ingredients/:ingredientId', deleteAdminIngredient);
+
+router.get('/contact-messages', listAdminContactMessages);
+router.get('/contact-messages/:messageId', getAdminContactMessage);
+router.patch(
+  '/contact-messages/:messageId/status',
+  updateAdminContactMessageStatus,
+);
 
 module.exports = router;

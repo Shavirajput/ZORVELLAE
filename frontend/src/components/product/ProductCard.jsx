@@ -5,11 +5,15 @@ import { formatPrice, getDefaultVariant, getStartingPrice } from '../../data/for
 import useShop from '../../context/useShop'
 import ProductImagePlaceholder from './ProductImagePlaceholder'
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product, variant = 'default' }) {
   const { addToCart, wishlist, toggleWishlist } = useShop()
   const [added, setAdded] = useState(false)
+  const [failedImageUrl, setFailedImageUrl] = useState(null)
   const isSaved = wishlist.includes(product.id)
   const canAddToDemoDossier = product.isDemo !== false && !product.purchaseAvailable
+  const isFeatured = variant === 'featured'
+  const productImageUrl = product.images?.[0]?.url
+  const productImageFailed = productImageUrl === failedImageUrl
 
   const handleAdd = async () => {
     if (!canAddToDemoDossier) return
@@ -20,17 +24,22 @@ export default function ProductCard({ product }) {
   }
 
   return (
-    <article className="group min-w-0">
-      <div className="relative">
-        <Link to={`/product/${product.slug}`} aria-label={`View ${product.name}`}>
-          {product.images?.[0]?.url ? (
+    <article className={`group min-w-0 ${isFeatured ? 'rounded-lg bg-surface-container-lowest shadow-card transition-shadow hover:shadow-ambient' : ''}`}>
+      <div className={`relative ${isFeatured ? 'overflow-hidden rounded-t-lg' : ''}`}>
+        <Link to={`/product/${product.slug}`} aria-label={`View ${product.name}`} className={isFeatured ? 'block overflow-hidden' : ''}>
+          {productImageUrl && !productImageFailed ? (
             <img
-              src={product.images[0].url}
+              src={productImageUrl}
               alt={product.images[0].alt || product.name}
-              className="aspect-[4/5] w-full object-cover"
+              className={`aspect-[4/5] w-full object-cover object-center ${isFeatured ? 'transition-transform duration-500 ease-luxury group-hover:scale-[1.03]' : ''}`}
+              onError={() => setFailedImageUrl(productImageUrl)}
             />
           ) : (
-            <ProductImagePlaceholder product={product} />
+            <ProductImagePlaceholder
+              product={product}
+              variant={isFeatured ? 'editorial' : 'default'}
+              className={isFeatured ? 'transition-transform duration-500 ease-luxury group-hover:scale-[1.03]' : ''}
+            />
           )}
         </Link>
         <button
@@ -46,9 +55,9 @@ export default function ProductCard({ product }) {
           {product.badge}
         </span>
       </div>
-      <div className="pt-md">
+      <div className={isFeatured ? 'p-md sm:p-lg' : 'pt-md'}>
         <p className="font-label-sm text-[9px] uppercase text-secondary">{product.categoryLabel}</p>
-        <Link to={`/product/${product.slug}`} className="mt-xs block font-headline text-headline-sm text-primary hover:text-secondary">
+        <Link to={`/product/${product.slug}`} className="mt-xs block font-headline text-headline-sm text-primary transition-colors hover:text-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary">
           {product.name}
         </Link>
         <p className="mt-xs line-clamp-2 min-h-10 font-body-sm text-on-surface-variant">

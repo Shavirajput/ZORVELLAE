@@ -1,16 +1,36 @@
 import axios from 'axios'
 import api from './api'
 
+const CATALOG_LIST_TIMEOUT_MS = 15000
+
 function toCatalogError(error) {
   if (axios.isCancel(error)) return error
 
   const response = error?.response?.data
+  const status = error?.response?.status
+  const timedOut = error?.code === 'ECONNABORTED' || error?.code === 'ETIMEDOUT'
+  let message = response?.message
+
+  if (typeof message !== 'string' || !message.trim()) {
+    if (status === 401) {
+      message = 'Your admin session could not be verified. Sign in again and retry.'
+    } else if (status === 403) {
+      message = 'You do not have permission to manage the catalog.'
+    } else if (status >= 500) {
+      message = 'The catalog service is unavailable. Please try again.'
+    } else if (timedOut) {
+      message = 'The catalog request timed out. Please try again.'
+    } else if (!error?.response) {
+      message = 'Unable to connect to the catalog service. Check your connection and retry.'
+    } else {
+      message = `The catalog request failed${status ? ` (${status})` : ''}. Please try again.`
+    }
+  }
+
   const catalogError = new Error(
-    typeof response?.message === 'string'
-      ? response.message
-      : 'Catalog management is temporarily unavailable.',
+    message,
   )
-  catalogError.status = error?.response?.status
+  catalogError.status = status
   catalogError.code = error?.code
   catalogError.fields = Array.isArray(response?.errors) ? response.errors : []
   return catalogError
@@ -37,7 +57,13 @@ async function request(config) {
 }
 
 export function listAdminProducts(params, signal) {
-  return request({ url: '/admin/products', method: 'GET', params, signal })
+  return request({
+    url: '/admin/products',
+    method: 'GET',
+    params,
+    signal,
+    timeout: CATALOG_LIST_TIMEOUT_MS,
+  })
 }
 
 export function getAdminProduct(productId, signal) {
@@ -64,7 +90,13 @@ export function deleteAdminProduct(productId) {
 }
 
 export function listAdminCategories(params, signal) {
-  return request({ url: '/admin/categories', method: 'GET', params, signal })
+  return request({
+    url: '/admin/categories',
+    method: 'GET',
+    params,
+    signal,
+    timeout: CATALOG_LIST_TIMEOUT_MS,
+  })
 }
 
 export async function listAllAdminCategories(signal) {

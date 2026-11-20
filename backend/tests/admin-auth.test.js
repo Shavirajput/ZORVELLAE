@@ -158,7 +158,7 @@ test('protected admin API namespace rejects unlisted routes before dispatch', as
   assert.equal(response.status, 401);
 });
 
-test('all product and category management methods require an admin session', async () => {
+test('all admin data methods require an admin session', async () => {
   const recordId = '65a000000000000000000001';
   const protectedRequests = [
     ['GET', '/api/admin/products'],
@@ -171,6 +171,26 @@ test('all product and category management methods require an admin session', asy
     ['GET', `/api/admin/categories/${recordId}`],
     ['PUT', `/api/admin/categories/${recordId}`],
     ['DELETE', `/api/admin/categories/${recordId}`],
+    ['GET', '/api/admin/orders'],
+    ['GET', `/api/admin/orders/${recordId}`],
+    ['PATCH', `/api/admin/orders/${recordId}/status`],
+    ['GET', '/api/admin/customers'],
+    ['GET', `/api/admin/customers/${recordId}`],
+    ['GET', '/api/admin/inventory'],
+    ['GET', `/api/admin/inventory/${recordId}/variant-1/adjustments`],
+    ['POST', `/api/admin/inventory/${recordId}/variant-1/adjustments`],
+    ['GET', '/api/admin/settings'],
+    ['PUT', '/api/admin/settings'],
+    ['GET', '/api/admin/content-pages/about-us'],
+    ['PUT', '/api/admin/content-pages/our-science'],
+    ['GET', '/api/admin/ingredients'],
+    ['POST', '/api/admin/ingredients'],
+    ['GET', `/api/admin/ingredients/${recordId}`],
+    ['PUT', `/api/admin/ingredients/${recordId}`],
+    ['DELETE', `/api/admin/ingredients/${recordId}`],
+    ['GET', '/api/admin/contact-messages'],
+    ['GET', `/api/admin/contact-messages/${recordId}`],
+    ['PATCH', `/api/admin/contact-messages/${recordId}/status`],
   ];
 
   for (const [method, path] of protectedRequests) {

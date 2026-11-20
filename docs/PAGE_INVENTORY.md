@@ -60,6 +60,11 @@ The customer account experience covers registration (`/register`), login (`/logi
 | A8 | Order Detail | `/admin/orders/:id` | Full order view |
 | A9 | Customer Management | `/admin/customers` | Customer list |
 | A10 | Customer Detail | `/admin/customers/:id` | Account view |
+| A11 | About Us Content | `/admin/content/about-us` | Draft/published plain-text page editor |
+| A12 | Our Science Content | `/admin/content/our-science` | Draft/published plain-text page editor |
+| A13 | Ingredient Library Management | `/admin/ingredients` | Search, status filter, pagination, and CRUD |
+| A14 | Add / Edit Ingredient | `/admin/ingredients/new`, `/admin/ingredients/:id/edit` | Approved copy only; no seeded claims |
+| A15 | Contact Messages | `/admin/contact-messages`, `/admin/contact-messages/:id` | Inbox, detail, read/resolved status; no public intake in this milestone |
 
 ---
 

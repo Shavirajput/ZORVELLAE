@@ -13,7 +13,7 @@ Browser
         └── Axios API client (credentials enabled)
               └── Vite /api proxy -> Express 5 on localhost:5000
                     ├── auth routes
-                    ├── admin auth/dashboard/catalog-management routes
+                    ├── admin auth/dashboard/catalog/content-management routes
                     ├── public catalog routes
                     ├── authenticated customer routes
                     ├── health route
@@ -57,10 +57,15 @@ backend/
   config/                     db.js, security.js
   middleware/                 auth, origin check, error handling, not-found
   models/                     User, Category, Product, Cart, Wishlist, Address,
-                              Order (Order is currently uncommitted)
-  controllers/                auth, admin, admin catalog, public catalog, customer data, orders
+                              Order, InventoryAdjustment, StoreSettings,
+                              ContentPage, Ingredient, ContactMessage
+  controllers/                auth, admin, admin catalog/inventory/settings/content, public catalog,
+                              customer data, orders
   routes/                     auth, admin, products, categories, customer, health
   validators/adminCatalog.js  Admin catalog input and status validation
+  validators/adminInventory.js Inventory query and adjustment validation
+  validators/adminStoreSettings.js Store settings input validation
+  validators/adminContent.js   Content, ingredient, and message input validation
   services/imageStorage.js    HTTPS image-reference validation boundary
   scripts/seedCatalog.js      Explicit development-only sample seed
   scripts/provisionAdmin.js   Operator-only existing-account role promotion
@@ -69,12 +74,14 @@ backend/
   utils/                      response envelope and async handler
 ```
 
-`backend/server.js` loads `backend/.env` with dotenv and does not override existing
-environment variables. `backend/config/db.js` uses `MONGO_URI`, selects
-`zorvellae`, leaves TLS verification at the Node/MongoDB defaults, and retries
-connection failures with backoff. The Atlas TLS handshake currently fails, so
-the API can start while database-backed endpoints return safe unavailable
-responses.
+`backend/server.js` loads `backend/.env` with dotenv and does not override
+existing environment variables. `backend/config/db.js` uses `MONGO_URI`,
+selects `zorvellae`, leaves TLS verification at the Node/MongoDB defaults, and
+retries connection failures with backoff. Connection logs report safe error
+stages and identifiers without URI, hostname, message, or stack details. The
+Atlas TLS handshake currently fails, so the API can start while
+database-backed endpoints return safe unavailable responses. See the
+[MongoDB Atlas troubleshooting runbook](./MONGODB_ATLAS_TROUBLESHOOTING.md).
 
 ## Data model and request boundaries
 
@@ -112,8 +119,8 @@ responses.
 | Auth/profile | `/api/auth` | Customer register/login/logout/current-user/profile |
 | Catalog | `/api/products`, `/api/categories` | Public read/search/filter/sort |
 | Customer data | `/api/customer` | Customer cart, wishlist, addresses, and order records |
-| Admin | `/api/admin` | Separate login/logout/current-admin session, protected dashboard summary, and product/category CRUD |
-| Contact/operations | Not present | Contact, CRUD, inventory and settings APIs are not implemented |
+| Admin | `/api/admin` | Separate login/logout/current-admin session, protected dashboard summary, catalog CRUD, variant-level inventory management, store settings, About/Science editors, ingredient CRUD, and contact-message triage |
+| Contact intake | Not implemented | Admin can manage stored messages; public submission and storefront contact form are not present |
 
 API responses use `{ success, message, data?, pagination? }` or
 `{ success: false, message, errors? }`. Input validation is applied at route
@@ -133,11 +140,33 @@ and ownership.
   slugs, prices, variants, category references, statuses, and image references
   on the server. Product prices are derived from variant prices; new records
   are not made purchase-available by these APIs. Category deletion is rejected
-  while any product references it.
-- Dashboard revenue is reported unavailable because orders have no verified
-  payment state. Inventory is reported not configured because the Product model
-  has no stock data. Neither value is inferred or filled with fabricated
-  analytics.
+  while any product references it. Catalog edits preserve stock quantities for
+  retained variant IDs; stock can only be changed through the audited inventory
+  endpoint.
+- Dashboard revenue remains unavailable because orders have no verified
+  payment state. The dashboard inventory summary is not yet connected to the
+  inventory API; the dedicated inventory page reports database-backed variant
+  quantities and does not infer untracked values.
+- Inventory is optional per variant. Missing quantities remain untracked; the
+  global low-stock threshold is 5. Count/increment/decrement changes require a
+  reason and persist with an admin reference in a MongoDB transaction. No stock
+  is deducted during checkout or order creation.
+- Store settings use the fixed primary record ID and expose only a safe,
+  explicitly selected configuration shape. Unknown fields, including payment
+  credentials and other secrets, are rejected. Store identity fields and rates
+  remain blank/unconfigured by default; saved tax, shipping, and checkout
+  configuration does not affect storefront or checkout behavior.
+- About Us and Our Science use a keyed `ContentPage` model with draft/published
+  status and plain-text sections. Admin APIs accept only their declared copy
+  fields; no copy is seeded and no public content API is exposed yet.
+- Ingredient records store name, INCI, unique slug, summary, monograph,
+  ordering, and draft/published status. They are not associated with products
+  and contain no seeded or inferred scientific claims. Ingredient CRUD and
+  search are admin-only.
+- Contact messages preserve sender/content fields as immutable, store admin
+  read/resolved status timestamps, and are accessible only through admin list,
+  detail, and status APIs. No public message intake or email reply service is
+  implemented, and no sample messages are inserted.
 - Catalog images are HTTPS references only; URL reachability and business
   ownership are not verified. The existing ignored local
   `backend/uploads/` directory and static route are not durable image storage;
@@ -153,13 +182,13 @@ and ownership.
 ## MongoDB availability
 
 The current failure is a TLS handshake alert (`ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR`,
-TLS alert 80) after TCP succeeds to each resolved Atlas SRV target. Forced TLS
-1.2 and TLS 1.3 attempts both fail. The workspace cannot inspect Atlas-side
-connection logs or the network path; the underlying source of the alert remains
-unconfirmed. Catalog CRUD is therefore covered by database-independent
-validation and authorization tests only; live CRUD and duplicate-index behavior
-remain blocked. Do not bypass TLS verification or substitute local/mock
-storage for production persistence.
+TLS alert 80) after SRV/TXT resolution and TCP success to each resolved Atlas
+target. The failure occurs before MongoDB authentication and database selection.
+The workspace cannot inspect Atlas-side connection logs or the network path;
+the underlying source of the alert remains unconfirmed. Database-backed
+behavior is covered only by database-independent validation and authorization
+tests; live reads/writes and persistence remain blocked. Do not bypass TLS
+verification or substitute local/mock storage for production persistence.
 
 ## Migration completed
 

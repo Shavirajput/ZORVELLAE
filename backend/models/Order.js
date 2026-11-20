@@ -40,6 +40,11 @@ const statusHistorySchema = new mongoose.Schema(
       required: true,
     },
     changedAt: { type: Date, required: true, default: Date.now },
+    changedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      default: null,
+    },
   },
   { _id: false },
 );

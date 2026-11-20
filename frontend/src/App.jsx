@@ -21,6 +21,17 @@ import OrderDetailsPage from './pages/OrderDetailsPage'
 import AdminLoginPage from './pages/admin/AdminLoginPage'
 import AdminDashboardPage from './pages/admin/AdminDashboardPage'
 import AdminProductsPage from './pages/admin/AdminProductsPage'
+import AdminOrdersPage from './pages/admin/AdminOrdersPage'
+import AdminOrderDetailPage from './pages/admin/AdminOrderDetailPage'
+import AdminCustomersPage from './pages/admin/AdminCustomersPage'
+import AdminCustomerDetailPage from './pages/admin/AdminCustomerDetailPage'
+import AdminInventoryPage from './pages/admin/AdminInventoryPage'
+import AdminStoreSettingsPage from './pages/admin/AdminStoreSettingsPage'
+import AdminContentPage from './pages/admin/AdminContentPage'
+import AdminIngredientsPage from './pages/admin/AdminIngredientsPage'
+import AdminIngredientFormPage from './pages/admin/AdminIngredientFormPage'
+import AdminContactMessagesPage from './pages/admin/AdminContactMessagesPage'
+import AdminContactMessageDetailPage from './pages/admin/AdminContactMessageDetailPage'
 import AdminProductFormPage from './pages/admin/AdminProductFormPage'
 import AdminCategoriesPage from './pages/admin/AdminCategoriesPage'
 import AdminCategoryFormPage from './pages/admin/AdminCategoryFormPage'
@@ -73,6 +84,18 @@ function App() {
               <Route path="categories" element={<AdminCategoriesPage />} />
               <Route path="categories/new" element={<AdminCategoryFormPage />} />
               <Route path="categories/:categoryId/edit" element={<AdminCategoryFormPage />} />
+              <Route path="orders" element={<AdminOrdersPage />} />
+              <Route path="orders/:orderId" element={<AdminOrderDetailPage />} />
+              <Route path="customers" element={<AdminCustomersPage />} />
+              <Route path="customers/:customerId" element={<AdminCustomerDetailPage />} />
+              <Route path="inventory" element={<AdminInventoryPage />} />
+              <Route path="settings" element={<AdminStoreSettingsPage />} />
+              <Route path="content/:pageKey" element={<AdminContentPage />} />
+              <Route path="ingredients" element={<AdminIngredientsPage />} />
+              <Route path="ingredients/new" element={<AdminIngredientFormPage />} />
+              <Route path="ingredients/:ingredientId/edit" element={<AdminIngredientFormPage />} />
+              <Route path="contact-messages" element={<AdminContactMessagesPage />} />
+              <Route path="contact-messages/:messageId" element={<AdminContactMessageDetailPage />} />
             </Route>
           </Routes>
         </ShopProvider>
